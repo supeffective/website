@@ -1,5 +1,3 @@
-import type { CssVarsConfig } from '@/lib/css'
-
 const proseMaxWidth = '72ch'
 const spacingSafeFallback = '20px'
 
@@ -430,4 +428,4 @@ export const cssVarsConfig = {
   grid: {
     holyGrialLayout: 'auto 1fr auto',
   },
-} satisfies Partial<CssVarsConfig>
+}

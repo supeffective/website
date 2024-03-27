@@ -153,7 +153,7 @@ export const useLivingDexToolbarStore = create(
         currentTool: defaultTool,
         setCurrentTool: (currentTool, context) => {
           return set(
-            (state) => {
+            (_state) => {
               return { currentTool }
             },
             false,
@@ -163,7 +163,7 @@ export const useLivingDexToolbarStore = create(
         lastSavedAt: null,
         setLastSavedAt: (lastSavedAt, context) => {
           return set(
-            (state) => {
+            (_state) => {
               return { lastSavedAt }
             },
             false,
