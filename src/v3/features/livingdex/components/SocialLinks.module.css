@@ -1,0 +1,63 @@
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: flex-start;
+  padding: 1rem 0;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: inherit;
+}
+
+.socialLink {
+  color: inherit;
+  font-size: 1rem;
+}
+
+.socialLink:hover {
+  color: var(--color-teal);
+}
+
+.permalinkCopy {
+  position: absolute;
+  background: #000;
+  padding: 0.6rem 1rem;
+  top: 100%;
+  font-size: 12px;
+  width: 340px;
+  margin-left: -240px;
+  border-radius: 4px;
+  color: #fff;
+  text-align: center;
+  z-index: 20;
+}
+
+.permalinkCopy input {
+  border-radius: 0;
+  border: none;
+  appearance: none;
+  padding: 0.25rem;
+  margin: 0 0 0.5rem 0;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.permalinkCopy input:focus {
+  outline: none;
+}
+
+.permalinkCopy input {
+  font-size: 10px;
+  color: #000;
+}
+
+.permalinkCopy .permalinkCopyCloseBtn {
+  cursor: pointer;
+  user-select: none;
+  opacity: 0.6;
+}
+
+.permalinkCopy .permalinkCopyCloseBtn:hover {
+  opacity: 1;
+}

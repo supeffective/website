@@ -1,0 +1,81 @@
+name: Update dependencies
+
+env:
+  NODE_VERSION: 20.9.0
+  PNPM_VERSION: 8.10.5
+  VERCEL_ENV: development
+
+on:
+  schedule:
+    - cron: 0 16 * * * # every day at 16pm
+  workflow_dispatch:
+
+concurrency:
+  group: updateDependencies-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  updateDependencies:
+    name: 'Update dependencies'
+    runs-on: ubuntu-latest
+    outputs:
+      has_changes: ${{ steps.git_diff.outputs.has_changes }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # fetch all history so that git diff can compare against HEAD~1
+
+      - name: 'Setup project'
+        uses: ./.github/actions/setup-project
+
+      - name: 'Update all dependencies'
+        run: pnpm -r update --latest
+
+      - name: 'Check code quality'
+        uses: ./.github/actions/check-quality
+
+      - name: Compare Changes
+        id: git_diff
+        run: |
+          git status
+          changes=$(git diff --name-only HEAD~0)
+          echo "Changed Files: $changes"
+          if [[ -n "$changes" ]]; then
+            echo "has_changes=yes" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changes=" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install jq
+        if: ${{ steps.git_diff.outputs.has_changes == 'yes' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+
+      - name: Check for existing PR
+        id: check_open_pr
+        if: ${{ steps.git_diff.outputs.has_changes == 'yes' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          pr_number=$(gh pr list --state open --label "update-deps" --json number --jq '.[0].number')
+          echo "pr_number=${pr_number:-0}" >> "$GITHUB_OUTPUT"
+
+      - name: Create PR if not exists
+        id: create_pr
+        if: ${{ steps.git_diff.outputs.has_changes == 'yes' && steps.check_open_pr.outputs.pr_number == 0 }}
+        env:
+          GH_TOKEN: ${{ github.token }} # make sure your GITHUB_TOKEN has PR creation permissions under "Workflow Permissions" of your repo Actions settings
+        run: |
+          # Prepare git
+          git config --global user.email "noreply@github.com"
+          git config --global user.name "Github Actions"
+          git branch -u origin/main main
+          # Create branch, commit and PR
+          branch_name="update-deps/$(date +'%Y%m%d-%H%M%S')"
+          git checkout -b $branch_name
+          git add -A
+          git commit -m "chore(deps): update to latest versions"
+          git push origin $branch_name
+          gh pr create --title "chore: update dependencies 🪄" --base main --head $branch_name --label "update-deps" \
+            --body "This PR updates all package dependencies to their latest version. Please review the changes and merge if everything looks good."

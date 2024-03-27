@@ -1,0 +1,113 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.6.2/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "files": {
+    "ignore": [
+      "src/v3/",
+      "public/",
+      "build/",
+      "dist/",
+      ".next/",
+      ".vercel/",
+      ".wrangler/",
+      "cdk.out/",
+      ".sst/",
+      "*.json"
+    ],
+    "ignoreUnknown": true
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    }
+  },
+  "formatter": {
+    "enabled": true,
+    "lineWidth": 120,
+    "indentWidth": 2,
+    "indentStyle": "space",
+    "formatWithErrors": true
+  },
+  "javascript": {
+    "formatter": {
+      "enabled": true,
+      "lineWidth": 120,
+      "indentWidth": 2,
+      "indentStyle": "space",
+      "trailingComma": "all",
+      "semicolons": "asNeeded",
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "double",
+      "arrowParentheses": "always"
+    }
+  },
+  "json": {
+    "formatter": {
+      "enabled": false
+    }
+  },
+  "overrides": [
+    {
+      "include": ["src/pages", "src/pages/**", "src/v3/", "src/v3/**"],
+      "linter": {
+        "enabled": true,
+        "rules": {
+          "recommended": true,
+          "suspicious": {
+            "noExplicitAny": "off",
+            "noArrayIndexKey": "off",
+            "noGlobalIsNan": "off",
+            "noImplicitAnyLet": "off",
+            "noDuplicateCase": "off"
+          },
+          "correctness": {
+            "noUnusedVariables": "off",
+            "noChildrenProp": "off",
+            "noPrecisionLoss": "off",
+            "useExhaustiveDependencies": "off",
+            "useHookAtTopLevel": "off",
+            "noUnreachable": "off"
+          },
+          "complexity": {
+            "noForEach": "off",
+            "useOptionalChain": "off",
+            "useLiteralKeys": "off",
+            "noBannedTypes": "off"
+          },
+          "nursery": {
+            "noDuplicateJsonKeys": "off"
+          },
+          "a11y": {
+            "useButtonType": "off",
+            "useValidAnchor": "off",
+            "noSvgWithoutTitle": "off",
+            "useKeyWithClickEvents": "off",
+            "noNoninteractiveTabindex": "off",
+            "noPositiveTabindex": "off",
+            "noAutofocus": "off"
+          },
+          "style": {
+            "noNonNullAssertion": "off",
+            "useTemplate": "off",
+            "noUnusedTemplateLiteral": "off",
+            "useSelfClosingElements": "off",
+            "useSingleVarDeclarator": "off",
+            "noParameterAssign": "off",
+            "useImportType": "off"
+          },
+          "security": {
+            "noDangerouslySetInnerHtml": "off"
+          }
+        }
+      }
+    }
+  ]
+}

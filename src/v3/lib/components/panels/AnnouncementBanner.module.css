@@ -1,0 +1,28 @@
+.root {
+  padding: 1.5rem 2rem;
+  padding-top: calc(var(--menu-height) + 1rem);
+  text-align: center;
+  background-color: var(--color-teal-3);
+  border: 2px solid var(--color-teal-0);
+  border-left: none;
+  border-right: none;
+  font-size: 0.85rem;
+  z-index: 104;
+}
+
+.root a {
+  text-decoration: underline;
+}
+
+.closeBtn {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 105;
+}

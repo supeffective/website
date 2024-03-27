@@ -1,0 +1,167 @@
+.label {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+  cursor: default;
+  text-align: center;
+  vertical-align: middle;
+  background: #333;
+  border: 2px solid #555;
+  color: #fff;
+  padding: 2px 4px;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1;
+  text-shadow: 1px 1px #111;
+  text-transform: uppercase;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Helvetica Neue,
+    Arial,
+    Noto Sans,
+    sans-serif,
+    Apple Color Emoji,
+    Segoe UI Emoji,
+    Segoe UI Symbol,
+    Noto Color Emoji;
+}
+
+.rounded {
+  border-radius: 0.5rem;
+}
+
+.label-xs {
+  font-size: 11px;
+  padding: 2px 4px;
+}
+
+.label-sm {
+  font-size: 14px;
+  padding: 4px 6px;
+}
+
+.label-md {
+  font-size: 16px;
+  padding: 6px 8px;
+}
+
+.label-lg {
+  font-size: 18px;
+  padding: 8px 10px;
+}
+
+.label-xl {
+  font-size: 22px;
+  padding: 10px 12px;
+}
+
+/** Game-specific styles and colors **/
+
+.label[data-game='rb'] {
+  background: linear-gradient(to right, #ff0000 50%, #0000ff 50%);
+}
+
+.label[data-game='y'] {
+  background: linear-gradient(to right, #ffff37 50%, #ffff37 50%);
+  color: black;
+  text-shadow: 1px 1px white;
+}
+
+.label[data-game='gs'] {
+  background: linear-gradient(to right, #ffb702 50%, #85939f 50%);
+}
+
+.label[data-game='c'] {
+  background: linear-gradient(to right, #a38eff 50%, #a38eff 50%);
+}
+
+.label[data-game='rs'] {
+  background: linear-gradient(to right, #ff0000 50%, #0000ff 50%);
+}
+
+.label[data-game='e'] {
+  background: linear-gradient(to right, #5aab3c 50%, #5aab3c 50%);
+}
+
+.label[data-game='frlg'] {
+  background: linear-gradient(to right, #ff6a00 50%, #5aab3c 50%);
+}
+
+.label[data-game='dp'] {
+  background: linear-gradient(to right, #7ab6f6 50%, #de9ad9 50%);
+}
+
+.label[data-game='pt'] {
+  background: linear-gradient(to right, #ead6b8 0%, #838383 100%);
+  color: black;
+  text-shadow: 1px 1px #fff;
+}
+
+.label[data-game='hgss'] {
+  background: linear-gradient(to right, #ffb702 0%, #85939f 100%);
+}
+
+.label[data-game='bw'] {
+  background: linear-gradient(to right, #000 50%, #fff 50%);
+  text-shadow: 1px 1px black;
+}
+
+.label[data-game='b2w2'] {
+  background: linear-gradient(to right, #000 1%, #fff 100%);
+}
+
+.label[data-game='xy'] {
+  background: linear-gradient(to right, #365ea6 50%, #d22f4b 50%);
+}
+
+.label[data-game='oras'] {
+  background: linear-gradient(to right, #ff0000 0%, #0000ff 100%);
+}
+
+.label[data-game='sm'] {
+  background: linear-gradient(to right, #ff8000 50%, #5e00ff 50%);
+}
+
+.label[data-game='usum'] {
+  background: linear-gradient(to right, #ff8000 0%, #5e00ff 100%);
+}
+
+.label[data-game='go'] {
+  background: linear-gradient(to right, #00c4ff 0%, #0066ff 70%);
+}
+
+.label[data-game='lgpe'] {
+  background: linear-gradient(to right, #ffd500 50%, #986734 50%);
+}
+
+.label[data-game='swsh'] {
+  background: linear-gradient(to right, #32b1c7 50%, #d22f86 50%);
+}
+
+.label[data-game='home'] {
+  background: linear-gradient(to right, #6fc209 10%, #07c9bc 100%);
+}
+
+.label[data-game='bdsp'] {
+  background: linear-gradient(to right, #7ab6f6 0%, #de9ad9 100%);
+}
+
+.label[data-game='la'],
+.label[data-game='pla'] {
+  background: linear-gradient(to right, #ffffff 10%, #ffc70e 100%);
+  color: black;
+  text-shadow: 1px 1px #fff;
+}
+
+.label[data-game='sv'] {
+  background: linear-gradient(to right, #f84830 50%, #b05eff 50%);
+}
+
+.label[data-game='none'] {
+  background: #bbb;
+}

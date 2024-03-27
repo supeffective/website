@@ -1,0 +1,477 @@
+:root {
+  --color-black-0: #101112;
+  --color-black-1: #1a1d1f;
+  --color-black-2: #24282b;
+  --color-black-3: #676a6c;
+  --color-black-4: #b2b4b5;
+  --color-white-0: #888785;
+  --color-white-1: #cfcdca;
+  --color-white-2: #e6e4e2;
+  --color-white-3: #f0efed;
+  --color-white-4: #faf9f9;
+  --color-slate-0: #202329;
+  --color-slate-1: #3c4350;
+  --color-slate-2: #5a667a;
+  --color-slate-3: #8f97a5;
+  --color-slate-4: #c8cbd3;
+  --color-pink-0: #3d1f30;
+  --color-pink-1: #7d3661;
+  --color-pink-2: #c34e97;
+  --color-pink-3: #db8db9;
+  --color-pink-4: #efc8dd;
+  --color-green-0: #233017;
+  --color-green-1: #426025;
+  --color-green-2: #639533;
+  --color-green-3: #99b878;
+  --color-green-4: #cddcbc;
+  --color-blue-0: #313a45;
+  --color-blue-1: #617892;
+  --color-blue-2: #96bce8;
+  --color-blue-3: #bbd2f0;
+  --color-blue-4: #dee9f8;
+  --color-brown-0: #371d12;
+  --color-brown-1: #6d351b;
+  --color-brown-2: #a84d24;
+  --color-brown-3: #cc886a;
+  --color-brown-4: #e9c4b4;
+  --color-gold-0: #473b17;
+  --color-gold-1: #947b22;
+  --color-gold-2: #eac228;
+  --color-gold-3: #f6d67a;
+  --color-gold-4: #fdebbf;
+  --color-teal-0: #1c3734;
+  --color-teal-1: #2b6f6a;
+  --color-teal-1_5: #267e77;
+  --color-teal-2: #37aea5;
+  --color-teal-3: #86cac3;
+  --color-teal-4: #c6e5e1;
+  --color-purple-0: #352f46;
+  --color-purple-1: #6b5e94;
+  --color-purple-2: #a692eb;
+  --color-purple-3: #c5b6f2;
+  --color-purple-4: #e3dbf9;
+  --color-scarlet-0: #481d23;
+  --color-scarlet-1: #942f42;
+  --color-scarlet-2: #e93e65;
+  --color-scarlet-3: #f88996;
+  --color-scarlet-4: #ffc7cb;
+  --color-violet-0: #1d163a;
+  --color-violet-1: #2f2577;
+  --color-violet-2: #3f35ba;
+  --color-violet-3: #8975d3;
+  --color-violet-4: #c7baea;
+  --color-main-bg: #af6dc7;
+  --gradient-0: linear-gradient(206deg, #ffc7cb 11%, #c34e97 73%);
+  --gradient-1: repeating-linear-gradient(213deg, #1d163a 74%, #c6e5e1 74%);
+  --gradient-2: linear-gradient(280deg, #37aea5 18%, #cddcbc 99%);
+  --font-size-0: 0.75rem;
+  --font-size-1: 0.875rem;
+  --font-size-2: 1rem;
+  --font-size-3: 1.125rem;
+  --font-size-4: 1.25rem;
+  --font-size-5: 1.5rem;
+  --font-size-6: 2rem;
+  --font-size-7: 3rem;
+  --font-size-8: 4rem;
+  --font-size-9: 6rem;
+  --font-size-10: 8rem;
+  --border-radius-0: 0;
+  --border-radius-1: 4px;
+  --border-radius-2: 6px;
+  --border-radius-3: 8px;
+  --border-radius-4: 16px;
+  --border-radius-5: 32px;
+  --border-radius-6: 9999px;
+  --border-width-0: 0;
+  --border-width-1: 1px;
+  --border-width-2: 2px;
+  --border-width-3: 4px;
+  --border-width-4: 8px;
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 32px;
+  --space-5: 64px;
+  --space-6: 128px;
+  --space-7: 256px;
+  --space-8: 512px;
+  --line-height-solid: 1;
+  --line-height-heading: 1.25;
+  --line-height-body: 1.5;
+  --border-style-0: none;
+  --border-style-1: solid;
+  --font-family-heading: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, Ubuntu,
+    roboto, noto, segoe ui, arial, sans-serif;
+  --font-family-body: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, Ubuntu,
+    roboto, noto, segoe ui, arial, sans-serif;
+  --font-family-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  --box-shadow-0: 0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 2px 0px rgba(0, 0, 0, 0.24);
+  --box-shadow-1: 0px 3px 6px 0px rgba(0, 0, 0, 0.16), 0px 3px 6px 0px rgba(0, 0, 0, 0.23);
+  --box-shadow-2: 0px 1px 2px 0px rgba(0, 0, 0, 0.07), 0px 2px 4px 0px rgba(0, 0, 0, 0.07),
+    0px 4px 8px 0px rgba(0, 0, 0, 0.07), 0px 8px 16px 0px rgba(0, 0, 0, 0.07), 0px 16px 32px 0px rgba(0, 0, 0, 0.07),
+    0px 32px 64px 0px rgba(0, 0, 0, 0.07);
+  --box-shadow-border: inset 0px 0px 0px 1px currentColor;
+  --box-shadow-border-light-overlay: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.13);
+  --box-shadow-border-dark-overlay: inset 0px 1px 0px 1px rgba(0, 0, 0, 0.13);
+  --duration-0: 250ms;
+  --duration-1: 375ms;
+  --duration-2: 500ms;
+  --easing-function-0: linear;
+  --easing-function-1: cubic-bezier(0.828, 0.39, 0.236, 1.167);
+  --easing-function-2: ease;
+  --letter-spacing-tracked: 0.1em;
+  --letter-spacing-negative: -0.05em;
+  --letter-spacing-large: 0.25em;
+
+  /** BLUEBERRY **/
+  --color-blueberry-dark: #152944;
+  --color-blueberry-gradient: linear-gradient(var(--color-blueberry-dark), var(--color-blueberry-medium));
+  --color-blueberry-gradient-inv: linear-gradient(var(--color-blueberry-medium), var(--color-blueberry-dark));
+  --color-blueberry-gradient-shiny: linear-gradient(var(--color-blueberry-medium), var(--color-blueberry-shiny));
+  --color-blueberry-gradient-shiny-inv: linear-gradient(var(--color-blueberry-shiny) var(--color-blueberry-medium));
+  --color-blueberry-dark-rgb: 21, 41, 68;
+  --color-blueberry-dark-alpha20: rgba(21, 41, 68, 0.2);
+  --color-blueberry-dark-alpha50: rgba(21, 41, 68, 0.5);
+  --color-blueberry-dark-alpha80: rgba(21, 41, 68, 0.8);
+  --color-blueberry-darker: #0d1929;
+  --color-blueberry-darker-rgb: 13, 25, 41;
+  --color-blueberry-darker-alpha20: rgba(13, 25, 41, 0.2);
+  --color-blueberry-darker-alpha50: rgba(13, 25, 41, 0.5);
+  --color-blueberry-darker-alpha80: rgba(13, 25, 41, 0.8);
+  --color-blueberry-medium: #164780;
+  --color-blueberry-medium-rgb: 22, 71, 128;
+  --color-blueberry-medium-alpha20: rgba(22, 71, 128, 0.2);
+  --color-blueberry-medium-alpha50: rgba(22, 71, 128, 0.5);
+  --color-blueberry-medium-alpha80: rgba(22, 71, 128, 0.8);
+  --color-blueberry-medium-bright: #004698;
+  --color-blueberry-medium-bright-rgb: 0, 70, 152;
+  --color-blueberry-light: #87c5ff;
+  --color-blueberry-shiny: #16c2f0;
+  --color-blueberry-accent: #efc718;
+  --color-blueberry-accent-hsl: 49, 87%, 52%;
+  /* --color-blueberry-secondary: #10a6a7; */
+  --color-blueberry-secondary: #008898;
+  --color-blueberry-secondary-700: #063543;
+  --color-blueberry-secondary-300: #a9ebbb;
+  --color-blueberry-secondary-100: #1ca0b04d;
+  --color-link: var(--color-blueberry-accent);
+
+  /* teal2: 37aea5 */
+  --color-box-header: var(--color-teal-2);
+  --color-box-body: var(--color-teal-4);
+}
+
+.bg-blueberry-dark {
+  background-color: var(--color-blueberry-dark);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.bg-blueberry-gradient {
+  background: var(--color-blueberry-gradient);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.bg-blueberry-gradient-inv {
+  background: var(--color-blueberry-gradient-inv);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.bg-blueberry-dark-alpha20 {
+  background-color: var(--color-blueberry-dark-alpha20);
+}
+
+.bg-blueberry-dark-alpha50 {
+  background-color: var(--color-blueberry-dark-alpha50);
+}
+
+.bg-blueberry-dark-alpha80 {
+  background-color: var(--color-blueberry-dark-alpha80);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.bg-blueberry-darker {
+  background-color: var(--color-blueberry-darker);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.bg-blueberry-darker-alpha20 {
+  background-color: var(--color-blueberry-darker-alpha20);
+}
+
+.bg-blueberry-darker-alpha50 {
+  background-color: var(--color-blueberry-darker-alpha50);
+}
+
+.bg-blueberry-darker-alpha80 {
+  background-color: var(--color-blueberry-darker-alpha80);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.bg-blueberry-medium {
+  background-color: var(--color-blueberry-medium);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.bg-blueberry-medium-alpha20 {
+  background-color: var(--color-blueberry-medium-alpha20);
+}
+
+.bg-blueberry-medium-alpha50 {
+  background-color: var(--color-blueberry-medium-alpha50);
+}
+
+.bg-blueberry-medium-alpha80 {
+  background-color: var(--color-blueberry-medium-alpha80);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.bg-blueberry-medium-bright {
+  background-color: var(--color-blueberry-medium-bright);
+  color: #000;
+}
+
+.bg-blueberry-light {
+  background-color: var(--color-blueberry-light);
+  color: #000;
+}
+
+.bg-blueberry-accent {
+  background-color: var(--color-blueberry-accent);
+  color: #000;
+}
+
+/* THEMEd */
+:root {
+  /* Dimensions */
+  --menu-height: 64px;
+  --menu-offset: env(titlebar-area-height, 0px);
+  --toolbar-height: 54px;
+
+  /* Color Presets */
+  --dropshadow-black: drop-shadow(1px 1px 0px #000) drop-shadow(1px -1px 0px #000) drop-shadow(-1px 1px 0px #000)
+    drop-shadow(-1px -1px 0px #000);
+  --dropshadow-black-soft: drop-shadow(1px 1px 0px #333333ee) drop-shadow(1px -1px 0px #333333ee)
+    drop-shadow(-1px 1px 0px #333333ee) drop-shadow(-1px -1px 0px #333333ee);
+  --dropshadow-white: drop-shadow(1px 1px 0px #ffffff77) drop-shadow(1px -1px 0px #ffffff77)
+    drop-shadow(-1px 1px 0px #ffffff77) drop-shadow(-1px -1px 0px #ffffff77);
+
+  --color-black: #1a1a1a;
+
+  --color-gray: #828282;
+  --color-gray-dark: #323232;
+  --color-gray-light: #b5b5b5;
+  --bg-circle-shadow-black: radial-gradient(circle, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 62%) no-repeat center center;
+  --bg-circle-shadow-gray: radial-gradient(circle, rgba(122, 122, 122, 0.65) 0%, rgba(122, 122, 122, 0) 62%) no-repeat
+    center center;
+
+  --color-white: #f3f3f3;
+  --color-white-dark: #efefef;
+  --color-white-darker: #d0d0d0;
+  --color-white-light: #ffffff;
+  --bg-gradient-white: linear-gradient(90deg, var(--color-white-dark), hsla(0, 0%, 100%, 0)), var(--color-white-darker);
+
+  --color-beige: #f8f2e9;
+
+  --color-orange: #ff8002;
+  --color-orange-light: #f89230;
+  --color-orange-lighter: #ffad03;
+
+  --color-green: #79ab00;
+  --color-green-brighter: #e4eecc;
+
+  --color-lime: #b6e934;
+  --color-lime-light: #d7f89d;
+
+  --color-pink: #ff78bb;
+  --color-cyan: #32d6d5;
+
+  --color-navy: #617be9;
+  --color-navy-light: #a6b3ff;
+
+  --color-teal: #39b5ac;
+  --color-teal-light: #7accab;
+  --color-teal-lighter: #92e5cb;
+  --bg-circle-shadow-teal: radial-gradient(circle, rgba(122, 204, 171, 0.65) 0%, rgba(122, 204, 171, 0) 62%) no-repeat
+    center center;
+  --bg-gradient-teal: linear-gradient(90deg, var(--color-lime-light), hsla(0, 0%, 100%, 0)), var(--color-teal-lighter);
+
+  --color-purple: #9e81d5;
+  --color-purple-dark: #73579f;
+  --color-purple-darker: #503d6f;
+  --color-purple-light: #c8b8f9;
+  --color-purple-lighter: #ebd0fb;
+  --bg-circle-shadow-purple: radial-gradient(circle, rgba(200, 184, 249, 0.65) 0%, rgba(200, 184, 249, 0) 62%) no-repeat
+    center center;
+  --bg-gradient-purple: linear-gradient(90deg, var(--color-purple-light), hsla(0, 0%, 100%, 0)), var(--color-purple);
+
+  --color-blue: #4f7ec4;
+  --color-blue-light: #a6cef2;
+  --color-blue-lighter: #abeffa;
+  --bg-circle-shadow-blue: radial-gradient(circle, rgba(166, 206, 242, 0.65) 0%, rgba(166, 206, 242, 0) 62%) no-repeat
+    center center;
+  --bg-gradient-blue: linear-gradient(90deg, var(--color-blue-light), hsla(0, 0%, 100%, 0)), var(--color-blue);
+
+  --color-gold: #ffb406;
+  --color-gold-light: #facd6b;
+  --color-gold-lighter: #ffe97a;
+  --bg-circle-shadow-gold: radial-gradient(circle, rgba(250, 205, 107, 0.65) 0%, rgba(250, 205, 107, 0) 62%) no-repeat
+    center center;
+  --bg-gradient-gold: linear-gradient(90deg, var(--color-gold-lighter), hsla(0, 0%, 100%, 0)), var(--color-gold-light);
+
+  /* General */
+  --text-color: var(--color-blueberry-darker);
+  --color-primary: var(--color-purple);
+  --color-secondary: var(--color-teal);
+  /*noinspection CssUnknownTarget*/
+  --bg-pattern: url('/images/patterns/pattern-cross-diagonal25.png') repeat;
+  --bg-pattern-strong: url('/images/patterns/pattern-cross-diagonal25.png') repeat;
+  --bg-pattern-cross: url('/images/patterns/pattern-cross.png') repeat;
+}
+
+.bg-blueberry-gradient-static {
+  color: #fff;
+  background: linear-gradient(var(--color-blueberry-dark), var(--color-blueberry-medium));
+  background-repeat: no-repeat;
+  background-size: 100% 102dvh;
+  background-attachment: fixed;
+}
+
+@supports (-webkit-touch-callout: none) {
+  /* CSS specific to iOS devices */
+  .bg-blueberry-gradient-static {
+    /* iOS Safari doesnt support background-attachment: fixed */
+    background-repeat: repeat-y;
+    background-attachment: initial;
+    background-size: cover;
+  }
+}
+
+/* .bg-blueberry-gradient-static::before {
+  content: '';
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--color-blueberry-medium) linear-gradient(var(--color-blueberry-dark), var(--color-blueberry-medium), linear-gradient(var(--color-blueberry-dark)));
+  z-index: -1;
+  background-repeat: repeat-y;
+  background-size: 100% 100vh;
+  background-position: 50% 50%;
+ } */
+
+.bg-ball-pattern50 {
+  background: url('/images/patterns/pattern-ball50.png') center center;
+}
+.bg-ball-pattern25 {
+  background: url('/images/patterns/pattern-ball25.png') center center;
+}
+.bg-ball-pattern10 {
+  background: url('/images/patterns/pattern-ball10.png') center center;
+}
+
+.bg-white {
+  background: var(--color-white);
+  color: var(--text-color);
+}
+
+.bg-white-semi {
+  background: rgba(243, 243, 243, 0.5);
+  color: var(--text-color);
+}
+
+.bg-black-semi {
+  background: rgba(0, 0, 0, 0.15);
+  color: var(--text-color);
+}
+
+.bg-beige {
+  background: var(--color-beige);
+  color: var(--text-color);
+}
+
+.bg-purple {
+  background: var(--color-purple);
+  color: var(--color-white);
+}
+
+.bg-purple-light {
+  background: var(--color-purple-light);
+  color: var(--text-color);
+}
+
+.bg-teal {
+  background: var(--color-teal);
+  color: var(--color-white);
+}
+
+.bg-teal-light {
+  background: var(--color-teal-light);
+  color: var(--text-color);
+}
+
+.bg-blue {
+  background: var(--color-blue);
+  color: var(--color-white);
+}
+
+.bg-blue-light {
+  background: var(--color-blue-light);
+  color: var(--text-color);
+}
+
+.bg-gold {
+  background: var(--color-gold);
+  color: var(--text-color);
+}
+
+.bg-gold-light {
+  background: var(--color-gold-light);
+  color: var(--text-color);
+}
+
+.bg-gr-white {
+  background: var(--bg-gradient-white);
+}
+
+.bg-gr-purple {
+  background: var(--bg-gradient-purple);
+}
+
+.bg-gr-teal {
+  background: var(--bg-gradient-teal);
+}
+
+.bg-gr-blue {
+  background: var(--bg-gradient-blue);
+}
+
+.bg-gr-gold {
+  background: var(--bg-gradient-gold);
+}
+
+.bg-gr-white-pattern {
+  background: var(--bg-pattern), var(--bg-gradient-white);
+}
+
+.bg-gr-purple-pattern {
+  background: var(--bg-pattern), var(--bg-gradient-purple);
+}
+
+.bg-gr-teal-pattern {
+  background: var(--bg-pattern), var(--bg-gradient-teal);
+}
+
+.bg-gr-blue-pattern {
+  background: var(--bg-pattern), var(--bg-gradient-blue);
+}
+
+.bg-gr-gold-pattern {
+  background: var(--bg-pattern), var(--bg-gradient-gold);
+}
+
+.fg-blueberry {
+  color: rgba(255, 255, 255, 0.8);
+}

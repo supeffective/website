@@ -1,0 +1,33 @@
+name: Quality Checks
+
+env:
+  NODE_VERSION: 20.9.0
+  PNPM_VERSION: 8.10.5
+  VERCEL_ENV: development
+
+on:
+  push:
+    branches:
+      - main
+      - 'update-deps/*'
+  pull_request:
+    branches:
+      - main
+      - 'update-deps/*'
+
+concurrency:
+  group: checkCodeQuality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checkCodeQuality:
+    name: 'Lint, Build & Test'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: 'Setup project'
+        uses: ./.github/actions/setup-project
+
+      - name: 'Check code quality'
+        uses: ./.github/actions/check-quality

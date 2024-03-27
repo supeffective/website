@@ -1,0 +1,63 @@
+.ReactModal__Html--open,
+.ReactModal__Body--open {
+  overflow: hidden; /* prevents background page from scrolling when the modal is open */
+}
+
+.ReactModalPortal {
+  z-index: 9999;
+  overflow: auto;
+}
+
+.ReactModal__Overlay {
+  background: rgba(0, 0, 0, 0.5) !important;
+  overflow: auto;
+}
+
+.ReactModal__Overlay--before-close {
+  pointer-events: none;
+}
+
+/*.ReactModal__Content {*/
+/*  background: none !important;*/
+/*  border: none !important;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*}*/
+
+.modal-content-wrapper {
+  position: relative;
+  margin: 40px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 10px 10px 30px 10px;
+}
+
+.modal-dialog {
+  position: relative;
+  background: var(--color-white);
+  border-radius: 1rem;
+  box-shadow: 4px 4px 0 2px black;
+  padding: 2rem 2rem 1.5rem;
+  overflow: auto;
+  border: 2px solid #000;
+}
+
+.modal-dialog-message {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  /*font-weight: bold;*/
+}
+
+@media only screen and (max-width: 700px) {
+  .modal-content-wrapper {
+    margin: 5px;
+  }
+}

@@ -1,0 +1,5 @@
+.gameLogoImg {
+  border-radius: 0.5rem;
+  user-select: none;
+  pointer-events: none;
+}

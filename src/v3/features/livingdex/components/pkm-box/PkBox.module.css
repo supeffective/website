@@ -1,0 +1,575 @@
+.pkBoxGroup {
+  position: relative;
+  margin: 0;
+}
+
+.pkBoxGroupContent {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+@media only screen and (max-width: 840px) {
+  .pkBoxGroupContent {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+}
+
+.listedViewMode .pkBoxGroupContent {
+  background: var(--color-blueberry-dark-alpha80);
+  border-radius: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 3rem 2rem;
+  padding: 3rem 1rem;
+  color: #fff;
+}
+
+.listedViewMode .pkBoxCell.pkBoxEmptyCell {
+  display: none;
+}
+
+.listedViewMode .pkBoxCell {
+}
+
+.pkBoxCell .pkBoxCellLabel {
+  display: none;
+  text-align: center;
+  font-size: 0.85rem;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  line-height: 1rem;
+  margin-top: 0.3rem;
+}
+
+.uncaught .pkBoxCellLabel {
+  /*color: #e80000;*/
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.listedViewMode .uncaught .pkBoxCellContent {
+  border-radius: 1rem;
+}
+
+.boxedViewMode .pkBoxCellLabel {
+  position: absolute;
+  width: max-content;
+  max-width: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  z-index: 10;
+}
+
+.boxedViewMode .pkBoxCellLabel::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid #000;
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  margin-left: -9px;
+}
+
+.pkBoxCell:hover .pkBoxCellLabel,
+.pkBoxCell:focus .pkBoxCellLabel {
+  display: block;
+}
+
+.listedViewMode .pkBoxCell {
+}
+
+.listedViewMode .pkBoxCell .pkBoxCellLabel {
+  display: block;
+  max-height: 2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.listedViewMode .pkBoxCell:hover .pkBoxCellLabel,
+.listedViewMode .pkBoxCell:focus .pkBoxCellLabel {
+  overflow: visible;
+  text-overflow: initial;
+  font-size: 12px;
+  white-space: normal;
+  background: #111;
+  color: #fff;
+  z-index: 1;
+  border-radius: 4px;
+  max-height: initial;
+  position: absolute;
+  top: 100%;
+  margin-top: 1rem;
+  width: 150%;
+  margin-left: -25%;
+  padding: 0.5rem 1rem;
+}
+
+@media only screen and (max-width: 440px) {
+  .listedViewMode .pkBoxCell {
+    padding-bottom: 3rem;
+  }
+
+  .listedViewMode .pkBoxGroupContent {
+    grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+    gap: 0.5rem;
+  }
+}
+
+.pkBox {
+  position: relative;
+  border-radius: 26px;
+  /* background: #fff; */
+  line-height: 0;
+  /* box-shadow: 2px 2px 10px rgb(0 0 0 / 20%); */
+  /* background: hsla(0, 0%, 100%, 0.8); */
+  cursor: default;
+  background: var(--color-box-body);
+  border: 1px solid var(--color-blueberry-medium-bright);
+}
+
+.pkBoxHeader {
+  position: relative;
+  text-align: center;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 24px 24px 0 0;
+  /*border: var(--borderwidth) solid var(--bordercolor);*/
+  /*box-shadow: 4px 4px 0 2px black;*/
+  border-bottom: none;
+  cursor: default;
+
+  background: var(--color-box-header);
+}
+
+.pkBoxHeaderTitle {
+  position: relative;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem;
+  line-height: normal;
+  width: 65%;
+  display: inline-block;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.7);
+  color: #000;
+  cursor: default;
+  /*cursor: text;*/
+  /*user-select: none;*/
+}
+
+.pkBoxHeaderTitle.overflowingBox {
+  color: #be2c2c;
+}
+
+.pkBoxHeaderTitleEditor {
+  display: block;
+}
+
+.pkBoxContent {
+  position: relative;
+  border-radius: 0 0 24px 24px;
+  /*border: var(--borderwidth) solid var(--bordercolor);*/
+  /*box-shadow: 4px 4px 0 2px black;*/
+  z-index: 1;
+  padding: 0.65rem 0.8rem 0.8rem 0.8rem;
+  margin: 0;
+
+  /* CSS grid*/
+  display: grid;
+  grid-template-columns: repeat(6, minmax(32px, 14fr));
+  grid-template-rows: repeat(5, minmax(32px, 14fr));
+  gap: 0;
+}
+
+:global(.dex-boxsize-20) .pkBoxContent {
+  grid-template-columns: repeat(5, minmax(32px, 14fr));
+  grid-template-rows: repeat(4, minmax(32px, 14fr));
+}
+
+:global(.pkBoxCount-1).pkBoxGroupContent .pkBoxContent {
+  grid-template-columns: repeat(auto-fill, minmax(72px, 14fr));
+}
+
+.pkBox:focus {
+  outline: none;
+}
+
+/*.boxSelectMode .pkBox:hover .pkBoxHeader {*/
+/*  background: var(--color-navy1);*/
+/*}*/
+
+/*.boxSelectMode .pkBox:hover .pkBoxHeaderTitle {*/
+/*  background: #fff;*/
+/*}*/
+
+/* BOX CELL : */
+
+.pkBoxCell {
+  position: relative;
+  border-radius: 5rem;
+  user-select: none;
+  aspect-ratio: 1;
+}
+
+.pkBoxCell::before {
+  content: '';
+  display: block;
+  background: var(--bg-circle-shadow-black);
+  border-radius: 5rem;
+  z-index: 0;
+  opacity: 0.5;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+}
+
+.pkBoxCellContent {
+  display: block;
+  position: absolute;
+}
+
+.pkBoxCell.pkBoxEmptyCell::before {
+  opacity: 0.2;
+}
+
+.cellSelectMode.editable .pkBoxCell {
+  cursor: pointer;
+}
+
+.cellSelectMode .pkBoxCell:hover {
+  /*background: #000;*/
+  z-index: 5;
+}
+
+.cellSelectMode .pkBoxCell:focus {
+  /*background: #000;*/
+  z-index: 10;
+}
+
+.cellSelectMode.editable .filterMatch::before,
+.cellSelectMode.editable .pkBoxCell:hover::before,
+.cellSelectMode.editable .pkBoxCell:focus::before {
+  background: var(--bg-circle-shadow-purple);
+}
+
+.filterMatch::before,
+.pkBoxCell:hover::before {
+  content: '';
+  display: block;
+  border-radius: 100%;
+}
+
+.boxSelectMode.editable .pkBoxContent:hover,
+.boxSelectMode.editable .pkBoxContent:focus,
+.boxSelectMode.editable .filterMatch,
+.cellSelectMode.editable .filterMatch::before,
+.cellSelectMode.editable .pkBoxCell:hover::before,
+.cellSelectMode.editable .pkBoxCell:focus::before {
+  /*border: 3px solid rgba(149, 106, 232, 0.7);*/
+  /*position: absolute;*/
+  /*left: -3px;*/
+  /*top: -3px;*/
+  opacity: 1;
+  background: radial-gradient(circle, var(--color-purple) 0%, rgba(255, 255, 255, 0) 60%) no-repeat center center;
+  border-style: solid;
+  /*// or 8px*/
+  border-width: 3px;
+
+  /*// special characters in data URIs have to be encoded, see the compiled CSS in the codepen below*/
+  /*// (also do not wrap the lines, that's just for better uderstanding)*/
+  /* see   https://yoksel.github.io/url-encoder/   */
+  /*<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">*/
+  /*    <rect x="4" y="4" width="72" height="72" fill="transparent" stroke="#000" stroke-width="8" />*/
+  /*  </svg>*/
+  border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect x='4' y='4' width='72' height='72' fill='transparent' stroke='%239E81D5' stroke-width='8' /%3E%3C/svg%3E");
+
+  /*// slice the image to 4 parts through the middle*/
+  border-image-slice: 50%;
+
+  /*// width/height of the corners (or 40px)*/
+  border-image-width: 1rem;
+}
+
+.boxSelectMode .pkBoxCell {
+  pointer-events: none;
+}
+
+.boxSelectMode.editable .filterMatch .pkBoxContent,
+.boxSelectMode.editable .pkBoxContent:hover,
+.boxSelectMode.editable .pkBoxContent:focus {
+  cursor: pointer;
+  background: #fff;
+  /*background: #f0f2fa;*/
+}
+
+.cellSelectMode.editable .pkBoxCell:active::before {
+  background: radial-gradient(circle, rgba(158, 129, 213, 0.73) 0%, rgba(255, 255, 255, 0) 60%) no-repeat center center;
+  border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect x='4' y='4' width='72' height='72' fill='transparent' stroke='%23000' stroke-width='8' /%3E%3C/svg%3E");
+}
+
+.pkBoxCellContent {
+  position: relative;
+  /*padding: 0.15rem;*/
+}
+
+.editable .pkBoxCell img {
+  transition:
+    filter 250ms,
+    opacity 250ms;
+}
+
+.listedViewMode .pkBoxCell.uncaught img,
+.pkBoxCell.uncaught img {
+  opacity: 0.8;
+  filter: contrast(0) brightness(0.1);
+  transition:
+    opacity 250ms,
+    filter 250ms;
+}
+
+.pkBoxCell.shiny.shinyLocked img {
+  opacity: 0.2;
+  transition:
+    opacity 250ms,
+    filter 250ms;
+}
+
+.pkBoxCell.uncaught:hover img,
+.pkBoxCell.uncaught:focus img,
+.filterMatch.uncaught img,
+.boxSelectMode .pkBoxContent:hover .pkBoxCell.uncaught img,
+.boxSelectMode .pkBoxContent:focus .pkBoxCell.uncaught img,
+.pkBoxCell.reveal img,
+.boxSelectMode .filterMatch .pkBoxContent .pkBoxCell.uncaught img .pkBoxCell.reveal img,
+.pkBoxCell.shiny.shinyLocked:hover img {
+  opacity: 1;
+  filter: none !important;
+}
+
+.uncaught:hover .pkBoxCellContent,
+.uncaught:focus .pkBoxCellContent,
+.filterMatch .pkBoxCellContent,
+.uncaught .pkBoxCellContent:hover,
+.uncaught .pkBoxCellContent:focus {
+  background: none;
+}
+
+/*.editable .pkBoxCell.uncaught img {*/
+/*  !* TODO: remove .editable *!*/
+/*  filter: grayscale(30%) contrast(0.4);*/
+/*}*/
+
+/*.cellSelectMode.editable .pkBoxCell.uncaught:hover img,*/
+/*.boxSelectMode.editable .pkBoxContent:hover .pkBoxCell.uncaught img {*/
+/*  filter: grayscale(0%) contrast(1);*/
+/*}*/
+
+/*.pkBoxCell.caught img {*/
+/*  filter: none;*/
+/*}*/
+
+.ballIcon,
+.alphaIcon,
+.gmaxIcon,
+.abilityIcon {
+  position: absolute;
+  z-index: 4;
+  font-size: 1rem;
+  border-radius: 16px;
+  color: #ff0000;
+  font-style: normal;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  height: max-content;
+  margin: 0;
+}
+
+.alphaIcon,
+.gmaxIcon {
+  background: none;
+  /*-webkit-text-stroke: 1px #802323;*/
+  box-shadow: none;
+  text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.6);
+  background: #fff;
+  border: 1px solid #ff0000;
+  opacity: 0.9;
+  zoom: 0.9;
+}
+
+.listedViewMode .alphaIcon,
+.listedViewMode .gmaxIcon {
+  opacity: 1;
+  font-size: 1.2rem;
+  zoom: 1;
+}
+
+.alphaIcon {
+  top: 10px;
+  left: 2px;
+  font-size: 1em;
+  padding: 0.1em;
+}
+
+.gmaxIcon {
+  top: 10px;
+  right: 2px;
+}
+
+.ballIcon {
+  right: 2px;
+  bottom: 3px;
+  color: #0ec70e;
+  background: #fff;
+  /*filter: var(--dropshadow-black);*/
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+.ballIcon .subIcon {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  right: 0;
+  background: none;
+  color: #000;
+  z-index: 5;
+  margin: 0;
+}
+
+.ballIconUncaught {
+  color: #000;
+  filter: none;
+  box-shadow: none;
+}
+
+.uncaught .ballIconCaught,
+.caught .ballIconUncaught {
+  display: none;
+}
+
+/*.editable.boxSelectMode .pkBoxContent:hover .ballIcon,*/
+/*.editable .pkBoxCell:hover .ballIcon {*/
+/*  color : var(--color-purple);*/
+/*}*/
+
+.shinyIcon {
+  position: absolute;
+  /*bottom: 3px;*/
+  /*right: 2px;*/
+  bottom: 10px;
+  right: 13px;
+  z-index: 5;
+  color: #f5b134;
+  -webkit-text-stroke: 1px #000;
+  font-size: 1.2rem;
+}
+
+.pkBoxHeaderTitle :global(.icon-pkg-shiny) {
+  color: #f5b134;
+  -webkit-text-stroke: 1px #000;
+  margin-left: 0.5rem;
+}
+
+.abilityIcon {
+  left: 2px;
+  bottom: 3px;
+  color: #ff0000;
+  background: #fff;
+  font-size: 0.7em;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  border: 1px solid #ff0000;
+  line-height: 1rem;
+  padding: 1px;
+}
+
+.pkBoxCell:focus,
+.pkBoxContent:focus,
+.pkBoxCellContent:focus {
+  outline: none;
+}
+
+.separatorTitle {
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 1rem 3rem;
+  margin: 2rem 0 4rem 0;
+  color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  display: inline-block;
+  /*width: 25%;*/
+  /*min-width:max-content;*/
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.separatorTitle i:first-child {
+  margin-right: 2rem;
+}
+
+.separatorTitle i:last-child {
+  margin-left: 2rem;
+}
+
+.pkBoxCell.shiny.shinyLocked {
+  /*opacity: 0.5;*/
+  cursor: not-allowed;
+}
+
+.pkBoxCell.shiny.shinyLocked * {
+  cursor: not-allowed;
+}
+
+.pkBoxCell.shiny.shinyLocked .ballIcon {
+  display: none;
+}
+
+.pkBoxCell.shiny.hasShinyBase {
+  cursor: help;
+}
+
+.pkBoxCell.shiny.hasShinyBase img,
+.pkBoxCell.shiny.shinyLocked .ballIcon {
+  opacity: 0.5;
+  filter: grayscale(100%);
+}
+
+.loadMoreBtnCell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 1rem;
+  padding: 1em;
+}
+
+.loadMoreBtnCell button {
+  /* padding: 0.5rem 0.75rem;
+  width: auto;
+  max-width: 100%;
+  min-width: auto;
+  font-size: 1rem; */
+
+  padding: 4px;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  width: 80px;
+  height: 50px;
+  min-width: auto;
+  background-color: #513659;
+}

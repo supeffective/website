@@ -1,0 +1,46 @@
+.pkmi-wrapper,
+.pkm-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.pkmi-wrapper img,
+.pkm-wrapper img {
+  width: 100%;
+  height: auto;
+}
+
+.pkm.pkm-placeholder,
+.pkm.pkmi-placeholder {
+  background-image: none;
+}
+
+.pkm-wrapper img {
+  image-rendering: optimizespeed;
+}
+
+.pkm-2x {
+  zoom: 2;
+}
+
+.icon--2x {
+  font-size: 1.4em;
+}
+
+.pkm-wrapper.pkimg-variant-pixelart img {
+  image-rendering: pixelated;
+}
+
+.pkimg-img-loading {
+  min-width: 32px;
+  min-height: 32px;
+  background-image: url(/images/placeholders/home3d-icon/unknown-white.png);
+  aspect-ratio: 1;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: none !important;
+  opacity: 0.8;
+}

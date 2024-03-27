@@ -1,0 +1,103 @@
+.selector {
+  margin-bottom: 1rem;
+  /*background: rgba(0, 0, 0, 0.2);*/
+  padding: 2rem 1rem;
+  border-radius: 1rem;
+}
+
+.games {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 1rem;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  padding: 1rem 2em;
+}
+
+.gameLogo {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.gameLogo img {
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.gameLogo:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.gameLogo:active {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.gameLogo.selected {
+  background: var(--color-beige);
+  /*box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.2) inset, 0 0 0 2px rgba(0, 0, 0, 0.5);*/
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.selectBtn {
+  padding: 0.5rem 1.5rem;
+  min-width: 0;
+}
+
+.gameTitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  margin: 2rem 0;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  display: inline-block;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.presets {
+  padding: 0 2rem;
+  margin-top: 1rem;
+}
+
+.preset {
+  margin-bottom: 2rem;
+  margin-top: 0 !important;
+  padding-bottom: 1.5rem;
+}
+
+.presetName {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.presetDescription {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 700px) {
+  .presets {
+    padding: 0 0.4rem;
+    margin-top: 0;
+  }
+
+  .games {
+    grid-template-columns: auto auto;
+    padding: 0 0.4rem;
+  }
+
+  .gameLogo {
+    padding: 1rem;
+  }
+}

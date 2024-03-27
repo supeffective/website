@@ -1,0 +1,32 @@
+.topRightCallout {
+  position: fixed;
+  top: var(--menu-height);
+  right: 1rem;
+  color: #000;
+  z-index: 100;
+}
+
+.topRightCallout .calloutBtn {
+  /*background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), var(--color-teal);*/
+
+  background-color: var(--color-blueberry-accent);
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+  padding: 0.4rem 1.5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  font-size: 0.8rem;
+  margin-left: 1.5rem;
+  display: inline-block;
+  transition: all 0.2s ease-in-out;
+  color: #000;
+}
+
+.topRightCallout .heroCalloutBtn {
+  background-color: var(--color-blueberry-accent);
+  color: #000;
+}
+
+.topRightCallout .calloutBtn:hover {
+  background-color: #fff;
+  color: #000;
+  text-decoration: none;
+}

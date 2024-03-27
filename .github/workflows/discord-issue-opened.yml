@@ -1,0 +1,68 @@
+name: Publish new issues to Discord
+env:
+  VERCEL_ENV: development
+on:
+  issues:
+    types:
+      - opened
+jobs:
+  publish_discord_message:
+    if: >
+      contains(github.event.issue.labels.*.name, 'muted') == false
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Generate the Discord message
+        id: generate_discord_message
+        uses: actions/github-script@v6
+        with:
+          result-encoding: string
+          retries: 3
+          script: |
+            // generate the message
+            if (!context?.payload?.issue?.html_url) {
+              throw new Error('context.payload.issue is undefined')
+            }
+
+            const issue = context.payload.issue
+            const issue_title = String(issue.title).replace(/['\\\/<>@"]/g, '')
+            const message = `👀 *New issue reported*: "${issue_title}" ${issue.html_url}`
+
+            return message
+
+      - name: Send message to Discord
+        uses: actions/github-script@v6
+        env:
+          DISCORD_ISSUES_WEBHOOK_URL: ${{ secrets.DISCORD_ISSUES_WEBHOOK_URL }}
+        with:
+          result-encoding: string
+          retries: 1
+          script: |
+            // Send message to Discord, using the previous step output
+            const message = '${{ steps.generate_discord_message.outputs.result }}'
+
+            if (message.length === 0) {
+              return ''
+            }
+
+            const discord_webhook_url = String(process.env.DISCORD_ISSUES_WEBHOOK_URL || '')
+
+            if (!discord_webhook_url || !discord_webhook_url.startsWith('http')) {
+              throw new Error('DISCORD_ISSUES_WEBHOOK_URL is not set, or it is not a valid URL!')
+            }
+
+            const payload = JSON.stringify({
+              content: message
+            })
+
+            await fetch(discord_webhook_url, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: payload,
+            })
+
+            return "ok"

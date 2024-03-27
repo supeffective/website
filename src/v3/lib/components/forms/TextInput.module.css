@@ -1,0 +1,43 @@
+.Root {
+  position: relative;
+  display: flex;
+  width: 100%;
+  padding: 0.5rem 1rem;
+}
+
+@media (max-width: 640px) {
+  .Root {
+    flex-direction: column;
+  }
+}
+
+.Input {
+  position: relative;
+  display: block;
+  flex: 1;
+  justify-content: center;
+  min-width: 8rem;
+  vertical-align: baseline;
+  border: 1px solid #000;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  border-radius: 4px;
+  font-family: inherit;
+  margin: 0.5rem 0.25rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.Input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: normal;
+  font-style: italic;
+}
+
+.Input[readonly] {
+  background: #e0e0e0;
+  color: #000;
+}

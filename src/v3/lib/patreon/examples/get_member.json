@@ -1,0 +1,61 @@
+{
+  "data": {
+    "attributes": {
+      "currently_entitled_amount_cents": 300,
+      "full_name": "Jota Test",
+      "is_follower": false,
+      "last_charge_date": "2023-06-26T17:30:00.000+00:00",
+      "last_charge_status": "Paid",
+      "lifetime_support_cents": 300,
+      "patron_status": "active_patron"
+    },
+    "id": "c0ffc5e4-b4cc-4b17-b2b3-1c8e3ca01173",
+    "relationships": {
+      "currently_entitled_tiers": {
+        "data": [
+          {
+            "id": "9094266",
+            "type": "tier"
+          }
+        ]
+      },
+      "user": {
+        "data": {
+          "id": "95758725",
+          "type": "user"
+        },
+        "links": {
+          "related": "https://www.patreon.com/api/oauth2/v2/user/95758725"
+        }
+      }
+    },
+    "type": "member"
+  },
+  "included": [
+    {
+      "attributes": {},
+      "id": "95758725",
+      "type": "user"
+    },
+    {
+      "attributes": {
+        "amount_cents": 300,
+        "created_at": "2022-09-14T02:35:23.699+00:00",
+        "description": "<p>Show <strong>appreciation</strong> for our work by donating a small amount, and help alleviating the costs of the server.</p><p></p><p>You will be also be able to see <strong>special posts about new features</strong> that are currently in progress, future plans, prototypes, etc.</p>",
+        "discord_role_ids": ["1121404800999891034"],
+        "edited_at": "2022-09-14T03:25:58.438+00:00",
+        "patron_count": 6,
+        "published": true,
+        "published_at": "2022-09-14T02:35:23.699+00:00",
+        "requires_shipping": false,
+        "title": "Basic",
+        "url": "/join/supereffective/checkout?rid=9094266"
+      },
+      "id": "9094266",
+      "type": "tier"
+    }
+  ],
+  "links": {
+    "self": "https://www.patreon.com/api/oauth2/v2/members/c0ffc5e4-b4cc-4b17-b2b3-1c8e3ca01173"
+  }
+}

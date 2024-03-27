@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Next.js: debug full stack",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "pnpm dev:debug",
+      "sourceMapPathOverrides": {
+        "webpack:///*": "${workspaceFolder}/*",
+        "webpack-internal:///*": "${workspaceFolder}/*"
+      },
+      "serverReadyAction": {
+        "pattern": "started server on .+, url: (https?://.+3001)",
+        "uriFormat": "%s",
+        "action": "debugWithChrome"
+      }
+    },
+    {
+      "name": "Next.js: debug client-side",
+      "type": "chrome",
+      "request": "launch",
+      "sourceMapPathOverrides": {
+        "webpack:///*": "${workspaceFolder}/*",
+        "webpack-internal:///*": "${workspaceFolder}/*"
+      },
+      "url": "http://localhost:3001"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+.inlineText {
+  position: relative;
+  display: inline-block;
+}
+
+.inlineText:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+}
+
+.inlineTextInput {
+  position: relative;
+  appearance: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  outline: none !important;
+  letter-spacing: inherit;
+  padding: 0;
+  /* actual styles:  */
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  resize: none;
+}

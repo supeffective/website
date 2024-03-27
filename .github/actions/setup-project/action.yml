@@ -1,0 +1,25 @@
+name: 'Setup project'
+description: 'Sets up project and its dependencies'
+env:
+  VERCEL_ENV: development
+runs:
+  using: 'composite'
+  steps:
+    - uses: pnpm/action-setup@v2
+      with:
+        version: ${{ env.PNPM_VERSION }}
+        run_install: false
+
+    - uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        # registry-url: https://npm.pkg.github.com
+        cache: 'pnpm'
+        cache-dependency-path: './pnpm-lock.yaml'
+
+    - shell: bash
+      run: |
+        rm -f .env && cp env.dist .env
+        pnpm env use --global 20
+        pnpm install -g bun@latest
+        pnpm install --frozen-lockfile

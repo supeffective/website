@@ -1,0 +1,70 @@
+.ctrl {
+  position: relative;
+  display: inline-block;
+  justify-content: center;
+  min-width: 8rem;
+  vertical-align: baseline;
+  /*border: 2px solid var(--bordercolor);*/
+  border: 2px solid #000;
+  background: #000;
+  color: #fff;
+  border-radius: 6rem;
+  text-align: center;
+  font-family: inherit;
+  margin: 0.5rem 0.25rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0.75rem 2.5rem;
+  cursor: pointer;
+  transition: all;
+  transition-duration: 200ms;
+  /*box-shadow: 3px 3px 0 1px black;*/
+}
+
+.ctrl.inverted {
+  border: 2px solid #000;
+  color: #000;
+  background: rgba(255, 255, 255, 1);
+}
+
+.ctrl:hover {
+  transition: all;
+  transition-duration: 200ms;
+  background: var(--color-blueberry-accent);
+  text-decoration: none;
+  color: #000;
+}
+
+.ctrl:active {
+  transition: all;
+  transition-duration: 200ms;
+  background: #000;
+}
+
+.ctrl.outlined {
+  background: none;
+  color: inherit;
+  transition: background-color 0.2s ease;
+}
+
+.ctrl.outlined:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.ctrl.outlined:active {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.ctrl.disabled,
+.ctrl[disabled],
+.ctrl.disabled:hover,
+.ctrl[disabled]:hover {
+  cursor: not-allowed;
+  background: #aaa !important;
+  -webkit-transition: opacity 0.25s;
+  transition: opacity 0.25s;
+}
+
+.btn {
+  user-select: none;
+}

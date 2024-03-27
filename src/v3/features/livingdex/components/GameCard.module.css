@@ -1,0 +1,141 @@
+.gameCardGrid,
+.gameCardList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 12fr));
+  gap: 1rem;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  margin: 1rem auto 3rem;
+}
+
+:global(.dex-count-0) .gameCardGrid {
+  display: none;
+}
+
+:global(.dex-count-1) .gameCardGrid {
+  grid-template-columns: auto;
+}
+:global(.dex-count-2) .gameCardGrid {
+  grid-template-columns: auto auto;
+}
+
+.gameCardWrapper {
+  position: relative;
+  display: flex;
+  flex: 1;
+  text-decoration: none !important;
+}
+
+.gameCard {
+  position: relative;
+  border-radius: 1rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.75rem;
+  box-sizing: initial;
+  user-select: none;
+  transition: all 0.2s ease-in-out;
+  /* box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2); */
+
+  background: var(--color-blueberry-darker);
+  border: 2px solid var(--color-blueberry-medium);
+  color: #fff;
+}
+
+.gameCard.clickable {
+  cursor: pointer;
+}
+
+.gameCard.clickable:hover {
+  background: var(--color-blueberry-dark);
+  border-color: #fff;
+}
+
+.gameCard:active,
+.gameCard:focus {
+  background-color: var(--color-blueberry-dark);
+  /* box-shadow: 2px 2px 0px 3px rgba(0, 0, 0, 0.15) inset; */
+}
+
+.gameCardBody {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.gameCardImage {
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.gameCard.clickable:hover .gameCardImage {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.gameCard.clickable:hover .gameCardBody {
+  color: #000;
+}
+
+.gameCardImage img {
+  max-width: 180px;
+  display: block;
+  user-select: none;
+}
+
+.gameCardInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 1;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.gameCardTitle {
+  /* font-family: 'Courier New', Courier, monospace; */
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0 0.7rem;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  color: var(--color-teal-2);
+  line-height: 1.2;
+  max-width: 180px;
+}
+
+.gameCardTitle div {
+  width: 100%;
+  display: block;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  height: 4ch;
+}
+
+.gameCardDexIcon {
+  font-size: 1.8rem;
+}
+
+.gameCardStatus {
+  color: #ffffff81;
+  font-size: 0.8rem;
+  font-style: italic;
+}

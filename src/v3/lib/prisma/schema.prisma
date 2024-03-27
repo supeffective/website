@@ -1,0 +1,113 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  // needed to run migrations on Neon PGSQL databases:
+  directUrl         = env("DIRECT_DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  // output   = "./generated/client"
+  // binaryTargets = ["native", "darwin", "darwin-arm64", "linux-arm64-openssl-1.1.x"]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  version           String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model User {
+  // Auth.JS-required--------------------------
+  id              String    @id @default(cuid())
+  name            String?
+  email           String?   @unique
+  emailVerified   DateTime?
+  image           String?
+  // -----------------------------------------
+  isDisabled      Boolean   @default(false)
+  roles           Json?
+  // profile
+  displayName     String?   @db.VarChar(50)
+  userName        String?   @unique @db.VarChar(20)
+  twitterUsername String?   @db.VarChar(20)
+  twitchUsername  String?   @db.VarChar(40)
+  discordUsername String?   @db.VarChar(40)
+
+  // relationships
+  accounts    Account[]
+  sessions    Session[]
+  livingDexes LivingDex[]
+  memberships Membership[]
+}
+
+model Membership {
+  id                String    @id @default(cuid())
+  patreonCampaignId String
+  patreonUserId     String?
+  patreonMemberId   String?
+  patronStatus      String?
+  provider          String    @default("patreon") // "patreon" or "paypal"
+  currentTier       String
+  highestTier       String
+  totalContributed  Int // in cents
+  createdAt         DateTime
+  updatedAt         DateTime
+  expiresAt         DateTime? // For temporary memberships (e.g. one-time donations)
+  userId            String
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // rewards
+  overridenRewards       Boolean @default(false) // if true, do not override rewards when syncing memberships status with Patreon
+  rewardMaxDexes         Int     @default(50)
+  rewardFeaturedStreamer Boolean @default(false)
+
+  @@unique([userId, patreonCampaignId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model LivingDex {
+  id             String   @id @default(cuid())
+  userId         String
+  specVer        String   @default("v4") @db.VarChar(10)
+  title          String?  @db.VarChar(255)
+  gameId         String   @db.VarChar(50)
+  data           String   @db.Text()
+  creationTime   DateTime
+  lastUpdateTime DateTime
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

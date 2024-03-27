@@ -1,0 +1,106 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+certificates/
+
+# dependencies
+node_modules
+.pnp
+.pnp.js
+node_modules_*
+node_modules-*
+node_modules*
+/node_modules
+/.pnp
+
+# testing
+coverage
+.coverage
+
+# next.js
+.next
+
+# turbo
+.turbo
+
+# vercel
+.vercel
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.override.yml
+
+# typescript
+*.tsbuildinfo
+
+# next-sitemap
+**/public/robots.txt
+**/public/sitemap.xml
+**/public/sitemap-*.xml
+
+# next-pwa
+**/public/workbox-*.js
+**/public/workbox-*.js.map
+**/public/sw.js
+**/public/sw.js.map
+**/public/fallback-*.js
+**/public/fallback-*.js.map
+
+# DATA AND LOGS
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+# testing
+/coverage
+
+# Artifacts
+.idea
+*.log
+.cache/
+build/
+dist/
+out/
+*.tgz
+*.zip
+*.tar.gz
+.eslintcache
+v8-compile-cache-*
+.ignore/
+.ignored/
+ignore/
+ignored/
+.local/
+~lock.*
+*~lock~
+
+# pnpm
+.pnpm-store
+
+# cms
+.contentlayer/
+
+certificates
+
+# app
+mdx-cache.json
+mdx-index.json
+src/styles/_variables.css
+src/styles/_variables.scss
+/dataset/

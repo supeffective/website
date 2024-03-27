@@ -1,0 +1,52 @@
+.page {
+  position: relative;
+  /* background-color: var(--color-main-bg); */
+  /* color: var(--color-black-2); */
+}
+
+.main {
+  --footer-height: 260px; /* approx. height of footer */
+  position: relative;
+  min-height: 70vh; /*this keeps the footer at the bottom*/
+  min-height: calc(100vh - var(--footer-height));
+}
+
+.page h1 {
+  font-weight: 800;
+  margin: 1.6rem 0;
+  letter-spacing: -1px;
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+.page h2 {
+  font-weight: 700;
+  margin: 1.4rem 0;
+  letter-spacing: -1px;
+  font-size: 1.6rem;
+}
+
+.page h3 {
+  font-weight: 600;
+  margin: 1.2rem 0;
+  font-size: 1.4rem;
+}
+
+.page h4 {
+  font-weight: 500;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
+.page h5 {
+  font-weight: bold;
+  margin: 0.8rem 0;
+  font-size: 1rem;
+}
+
+.page h6 {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0.6rem 0;
+  font-size: 1rem;
+}

@@ -1,0 +1,217 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "next",
+  "frontMatter.telemetry.disable": true,
+  "frontMatter.framework.startCommand": "pnpm dev",
+  "frontMatter.preview.host": "http://localhost:3001",
+  "frontMatter.preview.pathName": "v2",
+  "frontMatter.dashboard.openOnStart": false,
+  "frontMatter.git.enabled": true,
+  "frontMatter.git.commitMessage": "Synced by Front Matter {{hour24}}:{{minute}}",
+  "frontMatter.content.defaultFileType": "mdx",
+  "frontMatter.content.publicFolder": "[[workspace]]/packages/website/public",
+  "frontMatter.content.autoUpdateDate": true,
+  "frontMatter.content.fmHighlight": true,
+  "frontMatter.content.hideFm": false,
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "Articles",
+      "path": "[[workspace]]/content/articles",
+      "contentTypes": ["Article"]
+    },
+    {
+      "title": "Pages",
+      "path": "[[workspace]]/content/pages",
+      "contentTypes": ["Page"]
+    }
+  ],
+  "frontMatter.taxonomy.alignFilename": true,
+  "frontMatter.taxonomy.seoTitleField": "metaTitle",
+  "frontMatter.taxonomy.seoDescriptionField": "metaDescription",
+  "frontMatter.content.draftField": {
+    "name": "isDraft",
+    "type": "boolean"
+  },
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "Page",
+      "pageBundle": false,
+      "previewPath": null,
+      "fields": [
+        {
+          "title": "Creation date",
+          "name": "createdAt",
+          "type": "datetime",
+          "default": "{{now}}",
+          "required": true
+        },
+        {
+          "title": "Last modified date",
+          "name": "updatedAt",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isModifiedDate": true,
+          "required": true
+        },
+        {
+          "title": "Publish date",
+          "name": "publishedAt",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true,
+          "required": true
+        },
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "heading",
+          "required": true
+        },
+        {
+          "title": "Slug",
+          "name": "slug",
+          "type": "slug",
+          "required": true
+        },
+        {
+          "title": "Is in draft",
+          "name": "isDraft",
+          "type": "boolean",
+          "default": false,
+          "required": true
+        },
+        {
+          "title": "Meta Robots",
+          "name": "robots",
+          "type": "choice",
+          "choices": ["index, follow", "noindex, nofollow", "noindex, follow", "index, nofollow"],
+          "default": "index, follow",
+          "required": true
+        },
+        {
+          "title": "Meta Title",
+          "name": "metaTitle",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Meta Description",
+          "name": "metaDescription",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Banner Image",
+          "name": "bannerImageUrl",
+          "type": "image",
+          "isPreviewImage": true
+        },
+        {
+          "title": "Video URL",
+          "name": "videoUrl",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Article",
+      "pageBundle": false,
+      "previewPath": null,
+      "fields": [
+        {
+          "title": "Creation date",
+          "name": "createdAt",
+          "type": "datetime",
+          "default": "{{now}}",
+          "required": true
+        },
+        {
+          "title": "Last modified date",
+          "name": "updatedAt",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isModifiedDate": true,
+          "required": true
+        },
+        {
+          "title": "Publish date",
+          "name": "publishedAt",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true,
+          "required": true
+        },
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "heading",
+          "required": true
+        },
+        {
+          "title": "Slug",
+          "name": "slug",
+          "type": "slug",
+          "required": true
+        },
+        {
+          "title": "Is in draft",
+          "name": "isDraft",
+          "type": "boolean",
+          "default": false,
+          "required": true
+        },
+        {
+          "title": "Meta Robots",
+          "name": "robots",
+          "type": "choice",
+          "choices": ["index, follow", "noindex, nofollow", "noindex, follow", "index, nofollow"],
+          "default": "index, follow",
+          "required": true
+        },
+        {
+          "title": "Meta Title",
+          "name": "metaTitle",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Meta Description",
+          "name": "metaDescription",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "Summary Excerpt",
+          "name": "summary",
+          "type": "string",
+          "wysiwyg": true,
+          "required": true
+        },
+        {
+          "title": "Banner Image",
+          "name": "bannerImageUrl",
+          "type": "image",
+          "isPreviewImage": true
+        },
+        {
+          "title": "Video URL",
+          "name": "videoUrl",
+          "type": "string"
+        },
+        {
+          "title": "Tags",
+          "name": "tags",
+          "type": "tags"
+        },
+        {
+          "title": "Categories",
+          "name": "category",
+          "type": "categories",
+          "taxonomyLimit": 1,
+          "multiple": false,
+          "single": true
+        }
+      ]
+    }
+  ]
+}

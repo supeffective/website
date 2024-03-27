@@ -1,0 +1,69 @@
+[class^='icon-'],
+[class*=' icon-'] {
+  display: inline-block;
+  width: 1em;
+  margin: 0 2px;
+  letter-spacing: normal;
+}
+
+.typo-compact {
+  letter-spacing: -1px;
+}
+
+.margin-r {
+  margin-right: 0.5em !important;
+}
+
+.page .main .main-title-outlined {
+  opacity: 0.8;
+  text-align: center;
+  margin: 1.4rem 0 2.5rem;
+  color: #ffffff;
+  font-size: 2.2rem;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  filter: drop-shadow(1px 1px 0px #000) drop-shadow(-1px -1px 0px #000) drop-shadow(-1px 1px 0px #000)
+    drop-shadow(1px -1px 0px #000);
+  word-spacing: 0.5rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.female-symbol {
+  content: '♀';
+  color: deeppink;
+  text-shadow:
+    1px 1px rgba(255, 255, 255, 0.55),
+    -1px -1px rgba(255, 255, 255, 0.55);
+  font-weight: bold;
+  font-family: fantasy, system-ui, sans-serif;
+}
+
+.male-symbol {
+  content: '♂︎';
+  color: deepskyblue;
+  text-shadow:
+    1px 1px rgba(255, 255, 255, 0.55),
+    -1px -1px rgba(255, 255, 255, 0.55);
+  font-weight: bold;
+  font-family: fantasy, system-ui, sans-serif;
+}
+
+.offset-anchor {
+  /* https://stackoverflow.com/a/49968820/19361944 */
+  position: absolute;
+  left: 0;
+  top: -100px;
+  line-height: 0;
+}
+
+img {
+  object-fit: contain;
+}
+
+img[data-nimg='fill'] {
+  position: relative !important;
+}

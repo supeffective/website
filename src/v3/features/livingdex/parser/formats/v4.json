@@ -1,0 +1,30 @@
+{
+  "version": "v4",
+  "arrayDelimiters": ["(", ")"],
+  "arraySeparator": ",",
+  "propertySeparator": ";",
+  "boxPrefix": "###",
+  "pokemonPrefix": "-",
+  "boxProperties": [
+    ["title", "string:text"],
+    ["shiny", "boolean"]
+  ],
+  "pokemonProperties": [
+    ["id", "string:slug"],
+    ["captured", "boolean"],
+    ["shiny", "boolean"],
+    ["originMark", "string:slug"],
+    ["nature", "string:slug"],
+    ["pokerus", "string:slug"],
+    ["level", "number:int"],
+    ["dynamaxLevel", "number:int"],
+    ["teraType", "string:slug"],
+    ["ball", "string:slug"],
+    ["item", "string:slug"],
+    ["language", "string:slug"],
+    ["evs", "number:int[]"],
+    ["ivs", "number:int[]"],
+    ["moves", "string:slug[]"],
+    ["emblemMarks", "string:slug[]"]
+  ]
+}

@@ -1,0 +1,314 @@
+.article {
+  position: relative;
+  text-align: initial;
+  background: rgba(0, 0, 0, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0;
+  margin: 1rem auto;
+}
+
+.article.withoutBanner {
+  padding-top: 2rem;
+}
+
+.article.listEntry {
+  margin: 2rem auto;
+}
+
+/*
+-----------------
+  Container
+-----------------
+*/
+.container {
+  padding: 1rem 2rem;
+  margin: 0;
+  /*background: #dfd5f3;*/
+}
+
+.container ~ .container {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.article .container:first-of-type {
+  margin-top: 0;
+}
+
+.article .container:last-of-type {
+  margin-bottom: 0;
+}
+
+.videoContainer {
+  position: relative;
+  /*padding-bottom: 56.25%;*/
+  padding-bottom: 54%;
+  /* 16:9 */
+  /*padding-top: 25px;*/
+  height: 0;
+  border-radius: 0.6rem;
+  overflow: hidden;
+}
+
+.videoContainer iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*
+-----------------
+  Publish Date and Author
+-----------------
+*/
+
+.publishDate {
+  font-size: 0.9rem;
+  font-family: monospace;
+  letter-spacing: -1px;
+}
+
+.publishDate .icon {
+  display: inline-block;
+  vertical-align: text-bottom;
+  margin: 0 0.5rem 0 1px;
+}
+
+/*
+-----------------
+  Pills
+-----------------
+*/
+.pills {
+  padding-bottom: 0;
+  cursor: default;
+  user-select: none;
+}
+
+.pills .category {
+  display: inline-block;
+  border-radius: 0.5rem;
+  background: var(--text-color);
+  color: #fff;
+  text-transform: uppercase;
+  font-style: normal;
+
+  font-size: 0.6rem;
+  font-weight: 500;
+  text-align: left;
+  padding: 0.2rem 0.5rem;
+  margin: 0.5rem 3px 3px 0;
+  transition: all 0.3s;
+  cursor: default;
+}
+
+.pills .tag {
+  display: inline-block;
+  border-radius: 0.5rem;
+  background: #9b99a2;
+  color: #fff;
+  font-style: normal;
+
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-align: left;
+  padding: 0.2rem 0.5rem;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  transition: all 0.3s;
+  cursor: default;
+}
+
+/*
+-----------------
+  Main content
+-----------------
+*/
+.article .content {
+  line-height: 1.5;
+}
+
+.article .content ul li,
+.article .content ol li {
+  margin-bottom: 0.85rem;
+}
+
+.article .content a {
+  color: var(--color-blueberry-light);
+  text-decoration: none;
+}
+
+.article .content a:hover {
+  text-decoration: underline;
+}
+
+.contentWrapper,
+.contentWrapper > p {
+  position: relative;
+  display: block;
+}
+
+.article .content :global(.responsive-img) {
+  position: relative;
+  display: block;
+  margin: 1.5rem auto;
+  text-align: center;
+}
+
+.article .content :global(.responsive-img) img[data-nimg='fill'] {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  border-radius: 8px;
+  max-width: 60%;
+}
+
+.article .content li > p:only-child {
+  margin: 0;
+}
+
+.article .content li > p {
+  margin: 0;
+}
+
+/*
+-----------------
+  Banner Image
+-----------------
+*/
+
+.article > figure {
+  position: relative;
+  display: block;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  max-height: 350px;
+  border-top-left-radius: 0.7rem;
+  border-top-right-radius: 0.7rem;
+}
+
+.article > figure a {
+  position: relative;
+  display: block;
+}
+
+.article.fullEntry > figure {
+  max-height: 400px;
+}
+
+.article > figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: transparent;
+  max-height: 400px;
+}
+
+:global(.homepage) .article > figure img {
+  /* object-fit: contain !important; */
+  background-color: var(--color-teal-4);
+  background-image: linear-gradient(
+    45deg,
+    var(--color-teal-4) 25%,
+    var(--color-teal-3) 25%,
+    var(--color-teal-3) 50%,
+    var(--color-teal-2) 50%,
+    var(--color-teal-2) 75%,
+    var(--color-teal-3) 75%,
+    var(--color-teal-3) 100%
+  );
+  /* padding: 2rem;
+  padding-left: 4rem; */
+}
+
+.article > figure span span img {
+  /* nextjs Image */
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+/*
+-----------------
+  Title
+-----------------
+*/
+.title {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.title h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.title h2 a {
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.title h2 a:hover {
+  text-decoration: none;
+  color: var(--color-purple-dark);
+}
+
+/*
+-----------------
+  Comments
+-----------------
+*/
+.article .container.comments {
+  padding-top: 1.5rem;
+  border-top: 2px solid #9b99a2;
+  margin-top: 1.5rem;
+}
+
+/*
+-----------------
+  Sharing
+-----------------
+*/
+.article .container.socialLinks {
+  text-align: left;
+  margin: 0 2rem 2rem 2rem;
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-size: 0.8rem;
+  user-select: none;
+}
+
+.article .container.socialLinks .socialLink {
+  margin-left: 0.7rem;
+  font-size: 0.6rem;
+  background: var(--text-color);
+  color: #fff;
+  padding: 0.5rem;
+  height: 1.9rem;
+  width: 1.9rem;
+  text-align: center;
+  border-radius: 8rem;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0.8rem;
+}
+
+.article .container.socialLinks .socialLink i {
+  font-size: 0.7rem;
+  vertical-align: middle;
+}
+
+.article .container.socialLinks .socialLink:hover {
+  text-decoration: none;
+  background: var(--color-purple-dark);
+}
+
+@media only screen and (max-width: 700px) {
+  .article {
+    max-width: 100%;
+    margin: 0;
+  }
+}

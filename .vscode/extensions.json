@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "biomejs.biome",
+    "esbenp.prettier-vscode",
+    "christian-kohler.path-intellisense",
+    "eliostruyf.vscode-front-matter"
+  ],
+  "unwantedRecommendations": ["eamodio.gitlens"]
+}
