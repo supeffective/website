@@ -1,0 +1,120 @@
+{
+  "id": "gg.supereffective.app",
+  "name": "SuperEffective",
+  "short_name": "SuperEffective",
+  "description": "The most complete Living Dex tracker. Your Pokémon game companion.",
+  "theme_color": "#08101B",
+  "background_color": "#08101B",
+  "start_url": "./",
+  "lang": "en-US",
+  "orientation": "portrait",
+  "display": "standalone",
+  "display_override": [
+    "window-controls-overlay"
+  ],
+  "edge_side_panel": {
+    "preferred_width": 496
+  },
+  "categories": [
+    "entertainment",
+    "games",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "/images/pwa/manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/pwa/manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/images/pwa/manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/pwa/manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screenshots/v3-mobile-1.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpg",
+      "form_factor": "narrow",
+      "label": "A complete Pokédex and Livingdex Tracker"
+    },
+    {
+      "src": "/images/screenshots/v3-mobile-2.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpg",
+      "form_factor": "narrow",
+      "label": "Supporting all main-series games"
+    },
+    {
+      "src": "/images/screenshots/v3-mobile-3.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpg",
+      "form_factor": "narrow",
+      "label": "All the essential information you need in one place"
+    },
+    {
+      "src": "/images/screenshots/v3-desktop.jpg",
+      "sizes": "2560x1440",
+      "type": "image/jpg",
+      "form_factor": "wide",
+      "label": "SuperEffective, The complete Pokédex and Livingdex Tracker"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "LivingDex",
+      "short_name": "LivingDex",
+      "description": "Living Dexes page",
+      "url": "/apps/livingdex",
+      "icons": [
+        {
+          "src": "/images/pwa/favicon-196.png",
+          "sizes": "196x196",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Pokédex",
+      "short_name": "Pokédex",
+      "description": "Pokédex page",
+      "url": "/apps/pokedex",
+      "icons": [
+        {
+          "src": "/images/pwa/favicon-196.png",
+          "sizes": "196x196",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Missing Pokémon",
+      "short_name": "Missing",
+      "description": "Missing Pokémon page",
+      "url": "/apps/livingdex/missing",
+      "icons": [
+        {
+          "src": "/images/pwa/favicon-196.png",
+          "sizes": "196x196",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}
