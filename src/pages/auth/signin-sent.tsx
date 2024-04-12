@@ -1,7 +1,7 @@
 // ?provider=email&type=email
 
-import PageMeta from '@/v3/features/pages/components/PageMeta'
-import { abs_url } from '@/v3/lib/components/Links'
+import PageMeta from '@/features/pages/components/PageMeta'
+import { abs_url } from '@/lib/components/Links'
 
 export default function Page() {
   return (

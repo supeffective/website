@@ -1,51 +1,62 @@
-function getEnvName() {
-  return process.env.VERCEL_ENV ?? process.env.NODE_ENV
+import { z } from 'zod'
+
+import { parseEnvVars } from './envParser'
+
+const serverVars = z.object({
+  APP_ENV: z.string(),
+  // vercel
+  VERCEL_URL: z.string(), // does not have http[s]:// prefix, so cannot validate as .url()
+  // next auth
+  NEXTAUTH_SECRET: z.string(),
+  NEXTAUTH_URL: z.string().url().optional(),
+  NEXTAUTH_URL_INTERNAL: z.string().url().optional(),
+  // email
+  EMAIL_PROVIDER: z.enum(['resend', 'filesystem', 'console']),
+  EMAIL_DEFAULT_FROM: z.string().email(),
+  RESEND_API_KEY: z.string(),
+  // databases
+  DATABASE_URL: z.string().url(),
+  DIRECT_DATABASE_URL: z.string().url(),
+  SHADOW_DATABASE_URL: z.string().url(),
+  // patreon
+  PATREON_APP_CLIENT_ID: z.string(),
+  PATREON_APP_CLIENT_SECRET: z.string(),
+  // PATREON_CLIENT_ID: z.string(),
+  // PATREON_CLIENT_SECRET: z.string(),
+  // PATREON_CREATOR_ACCESS_TOKEN: z.string(),
+  // PATREON_CREATOR_REFRESH_TOKEN: z.string(),
+  // PATREON_WEBHOOK_SECRET: z.string(),
+})
+
+const clientVars = z.object({})
+
+type ProjectEnvVars = z.infer<typeof serverVars> & z.infer<typeof clientVars>
+type InitialProjectEnvVars = {
+  [K in keyof ProjectEnvVars]: ProjectEnvVars[K] | string | undefined
 }
 
-export function isServerSide() {
-  return typeof window === 'undefined' && typeof document === 'undefined'
+const initialEnvVars: InitialProjectEnvVars = {
+  APP_ENV: process.env.APP_ENV,
+  // vercel
+  VERCEL_URL: process.env.VERCEL_URL,
+  // next auth
+  NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+  NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+  NEXTAUTH_URL_INTERNAL: process.env.NEXTAUTH_URL_INTERNAL,
+  // email
+  EMAIL_DEFAULT_FROM: process.env.EMAIL_DEFAULT_FROM,
+  EMAIL_PROVIDER: process.env.EMAIL_PROVIDER,
+  RESEND_API_KEY: process.env.RESEND_API_KEY,
+  // databases
+  DATABASE_URL: process.env.DATABASE_URL,
+  DIRECT_DATABASE_URL: process.env.DIRECT_DATABASE_URL,
+  SHADOW_DATABASE_URL: process.env.SHADOW_DATABASE_URL,
+  // patreon
+  PATREON_APP_CLIENT_ID: process.env.PATREON_APP_CLIENT_ID,
+  PATREON_APP_CLIENT_SECRET: process.env.PATREON_APP_CLIENT_SECRET,
 }
 
-export function isClientSide() {
-  return !isServerSide()
-}
-
-export function assertServerOnly() {
-  if (isClientSide()) {
-    throw new Error('This file should not be imported in the browser')
-  }
-}
-
-export function isDevelopmentEnv() {
-  return getEnvName() === 'development'
-}
-
-export function isProductionEnv() {
-  return getEnvName() === 'production'
-}
-
-export function isPreviewEnv() {
-  return getEnvName() === 'preview'
-}
-
-export function isDebugEnabled() {
-  return process.env.DEBUG === 'true' || process.env.DEBUG === '1'
-}
-
-export function isVercel(): boolean {
-  return process.env.VERCEL === '1' || process.env.VERCEL === 'true'
-}
-
-export function isCI(): boolean {
-  return process.env.CI === '1' || process.env.CI === 'true'
-}
-
-export function isGithubActions(): boolean {
-  return process.env.GITHUB_ACTIONS === '1' || process.env.GITHUB_ACTIONS === 'true'
-}
-
-export function isLocalAssetsEnabled(): boolean {
-  const envVarValue = process.env.LOCAL_ASSETS_ENABLED ?? process.env.NEXT_PUBLIC_LOCAL_ASSETS_ENABLED
-
-  return isDevelopmentEnv() && (String(envVarValue) === '1' || String(envVarValue) === 'true')
-}
+export const envVars = parseEnvVars<ProjectEnvVars>(initialEnvVars, {
+  server: serverVars,
+  client: clientVars,
+})

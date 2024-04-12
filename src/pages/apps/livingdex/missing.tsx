@@ -1,4 +1,4 @@
-import MissingPokemonView from '@/v3/features/livingdex/views/MissingPokemonView'
+import MissingPokemonView from '@/features/livingdex/views/MissingPokemonView'
 
 const Page = () => {
   return <MissingPokemonView />

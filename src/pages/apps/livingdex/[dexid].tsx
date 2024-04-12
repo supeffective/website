@@ -1,15 +1,15 @@
 import { GetServerSidePropsContext } from 'next'
 
-import { getLegacyLivingDexRepository } from '@/v3/features/livingdex/repository'
-import { getPresets } from '@/v3/features/livingdex/repository/presets'
-import { PresetDexMap } from '@/v3/features/livingdex/repository/presets/types'
-import { LoadedDex } from '@/v3/features/livingdex/repository/types'
-import LivingDexApp from '@/v3/features/livingdex/views/LivingDexApp'
-import PageMeta from '@/v3/features/pages/components/PageMeta'
-import { abs_url } from '@/v3/lib/components/Links'
-import { getGameSetByGameId } from '@/v3/lib/data-client/game-sets'
-import { logger } from '@/v3/lib/utils/logger'
-import { deserializeObject, serializeObject } from '@/v3/lib/utils/serialization/jsonSerializable'
+import { getLegacyLivingDexRepository } from '@/features/livingdex/repository'
+import { getPresets } from '@/features/livingdex/repository/presets'
+import { PresetDexMap } from '@/features/livingdex/repository/presets/types'
+import { LoadedDex } from '@/features/livingdex/repository/types'
+import LivingDexApp from '@/features/livingdex/views/LivingDexApp'
+import PageMeta from '@/features/pages/components/PageMeta'
+import { abs_url } from '@/lib/components/Links'
+import { getGameSetByGameId } from '@/lib/data-client/game-sets'
+import { logger } from '@/lib/utils/logger'
+import { deserializeObject, serializeObject } from '@/lib/utils/serialization/jsonSerializable'
 
 const Page = ({ dexData, presets }: { dexData: any; presets: PresetDexMap }) => {
   const dex = deserializeObject<LoadedDex>(dexData)

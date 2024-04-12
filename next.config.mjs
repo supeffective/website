@@ -1,5 +1,5 @@
-import path from 'node:path'
 import { withAxiom } from 'next-axiom'
+import path from 'node:path'
 
 if (!process.env.VERCEL && !process.env.VERCEL_URL) {
   process.env.VERCEL_URL = `localhost:${process.env.PORT || 3000}`
@@ -43,7 +43,10 @@ const baseConfig = {
     ],
     minimumCacheTTL: 60 * 60 * 24 * 7 * 4, // 4 weeks
   },
-  webpack(config) {
+  webpack(config, { webpack }) {
+    config.experiments = { ...config.experiments, topLevelAwait: true }
+    config.externals.push('@node-rs/argon2', '@node-rs/bcrypt')
+
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'))
 

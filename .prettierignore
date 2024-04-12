@@ -20,14 +20,20 @@ assets/**/*.json
 styled-system/
 .vscode/templates
 **/ids.ts
-src/v3/
-src/v3/**/*
-v3/
 
 .local/
 public/assets/
 
+drizzle/
 src/mdx-cache.json
 src/mdx-index.json
 src/styles/_variables.css
 src/styles/_variables.scss
+src/lib/db/migrations/
+.vscode/
+turbo.json
+
+*.min.json
+*.min.css
+*.min.js
+*.map

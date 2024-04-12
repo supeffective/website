@@ -2,24 +2,24 @@ import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/compat/router'
 import { useContext, useEffect, useRef } from 'react'
 
-import { Routes } from '@/v3/config/routes'
-import { getLegacyLivingDexRepository } from '@/v3/features/livingdex/repository'
-import { getPresets } from '@/v3/features/livingdex/repository/presets'
-import { createDexFromPreset } from '@/v3/features/livingdex/repository/presets/createDexFromPreset'
-import { LivingDexResolvedUserLimits, LoadedDex } from '@/v3/features/livingdex/repository/types'
-import { LivingDexContext } from '@/v3/features/livingdex/state/LivingDexContext'
-import { useDexesContext } from '@/v3/features/livingdex/state/LivingDexListContext'
-import { GamePresetSelector } from '@/v3/features/livingdex/views/GamePresetSelector'
-import LivingDexApp from '@/v3/features/livingdex/views/LivingDexApp'
-import PageMeta from '@/v3/features/pages/components/PageMeta'
-import { useSession } from '@/v3/features/users/auth/hooks/useSession'
-import { getSession } from '@/v3/features/users/auth/serverside/getSession'
-import { ButtonInternalLink } from '@/v3/lib/components/Button'
-import { abs_url } from '@/v3/lib/components/Links'
-import { LoadingBanner } from '@/v3/lib/components/panels/LoadingBanner'
-import { UnauthenticatedBanner } from '@/v3/lib/components/panels/UnauthenticatedBanner'
-import { getGameSetByGameId } from '@/v3/lib/data-client/game-sets'
-import { devLog } from '@/v3/lib/utils/logger'
+import { Routes } from '@/config/routes'
+import { getLegacyLivingDexRepository } from '@/features/livingdex/repository'
+import { getPresets } from '@/features/livingdex/repository/presets'
+import { createDexFromPreset } from '@/features/livingdex/repository/presets/createDexFromPreset'
+import { LivingDexResolvedUserLimits, LoadedDex } from '@/features/livingdex/repository/types'
+import { LivingDexContext } from '@/features/livingdex/state/LivingDexContext'
+import { useDexesContext } from '@/features/livingdex/state/LivingDexListContext'
+import { GamePresetSelector } from '@/features/livingdex/views/GamePresetSelector'
+import LivingDexApp from '@/features/livingdex/views/LivingDexApp'
+import PageMeta from '@/features/pages/components/PageMeta'
+import { useSession } from '@/features/users/auth/hooks/useSession'
+import { getSession } from '@/features/users/auth/serverside/getSession'
+import { ButtonInternalLink } from '@/lib/components/Button'
+import { abs_url } from '@/lib/components/Links'
+import { LoadingBanner } from '@/lib/components/panels/LoadingBanner'
+import { UnauthenticatedBanner } from '@/lib/components/panels/UnauthenticatedBanner'
+import { getGameSetByGameId } from '@/lib/data-client/game-sets'
+import { devLog } from '@/lib/utils/logger'
 
 interface PageProps {
   selectedGame: string | null
@@ -61,7 +61,7 @@ const Page = ({ selectedGame, selectedPreset, limits }: PageProps) => {
   }
 
   if (createdDexId.current !== null) {
-    return <LoadingBanner content={'Creating your dex...'} />
+    return <LoadingBanner bannerContent={'Creating your dex...'} />
   }
 
   // console.log(limits)
@@ -70,7 +70,7 @@ const Page = ({ selectedGame, selectedPreset, limits }: PageProps) => {
   if (!_canCreateMoreDexes && dexes != null) {
     return (
       <LoadingBanner
-        content={
+        bannerContent={
           <>
             Dex limit exceeded: {limits.maxDexes} <br />
             <br />
@@ -98,12 +98,12 @@ const Page = ({ selectedGame, selectedPreset, limits }: PageProps) => {
   if (presetIsSelected) {
     // find preset
     if (gameSetId === '' || presets[gameSetId] === undefined) {
-      return <LoadingBanner content={'Game does not exist: ' + selectedGame} />
+      return <LoadingBanner bannerContent={'Game does not exist: ' + selectedGame} />
     }
 
     foundPreset = presets[gameSetId][selectedPreset]
     if (foundPreset === undefined) {
-      return <LoadingBanner content={'Preset does not exist: ' + selectedPreset} />
+      return <LoadingBanner bannerContent={'Preset does not exist: ' + selectedPreset} />
     }
   }
 

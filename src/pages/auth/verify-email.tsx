@@ -1,16 +1,16 @@
 import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/compat/router'
 
-import { Routes } from '@/v3/config/routes'
-import PageMeta from '@/v3/features/pages/components/PageMeta'
-import { useSession } from '@/v3/features/users/auth/hooks/useSession'
-import { useSignOut } from '@/v3/features/users/auth/hooks/useSignOut'
-import { createCsrfToken } from '@/v3/features/users/auth/serverside/createCsrfToken'
-import EmailSigninView from '@/v3/features/users/views/EmailSigninView'
-import Button from '@/v3/lib/components/Button'
-import { abs_url } from '@/v3/lib/components/Links'
-import { LoadingBanner } from '@/v3/lib/components/panels/LoadingBanner'
-import { UnauthenticatedBanner } from '@/v3/lib/components/panels/UnauthenticatedBanner'
+import { Routes } from '@/config/routes'
+import PageMeta from '@/features/pages/components/PageMeta'
+import { useSession } from '@/features/users/auth/hooks/useSession'
+import { useSignOut } from '@/features/users/auth/hooks/useSignOut'
+import { createCsrfToken } from '@/features/users/auth/serverside/createCsrfToken'
+import EmailSigninView from '@/features/users/views/EmailSigninView'
+import Button from '@/lib/components/Button'
+import { abs_url } from '@/lib/components/Links'
+import { LoadingBanner } from '@/lib/components/panels/LoadingBanner'
+import { UnauthenticatedBanner } from '@/lib/components/panels/UnauthenticatedBanner'
 
 export default function Page({ csrfToken }: { csrfToken: string | null }) {
   const auth = useSession()

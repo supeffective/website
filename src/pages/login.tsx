@@ -1,9 +1,9 @@
 import { GetServerSidePropsContext } from 'next'
 
-import PageMeta from '@/v3/features/pages/components/PageMeta'
-import { createCsrfToken } from '@/v3/features/users/auth/serverside/createCsrfToken'
-import { LoginView } from '@/v3/features/users/views/LoginView'
-import { abs_url } from '@/v3/lib/components/Links'
+import PageMeta from '@/features/pages/components/PageMeta'
+import { createCsrfToken } from '@/features/users/auth/serverside/createCsrfToken'
+import { LoginView } from '@/features/users/views/LoginView'
+import { abs_url } from '@/lib/components/Links'
 
 const Page = ({ csrfToken }: { csrfToken: string | null }) => {
   return (

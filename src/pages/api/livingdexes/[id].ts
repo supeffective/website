@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { getDexApi } from '@/v3/features/livingdex/commands/getDexApi'
-import { removeDexApi } from '@/v3/features/livingdex/commands/removeDexApi'
-import { apiGuard } from '@/v3/features/users/auth/serverside/apiGuard'
-import { getSession } from '@/v3/features/users/auth/serverside/getSession'
-import { apiErrors } from '@/v3/lib/utils/types'
+import { getDexApi } from '@/features/livingdex/commands/getDexApi'
+import { removeDexApi } from '@/features/livingdex/commands/removeDexApi'
+import { apiGuard } from '@/features/users/auth/serverside/apiGuard'
+import { getSession } from '@/features/users/auth/serverside/getSession'
+import { apiErrors } from '@/lib/utils/types'
 
 const getDexHandler = async (req: NextApiRequest) => {
   const { id } = req.query

@@ -7,9 +7,9 @@
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "noImplicitAny": false,
     "module": "esnext",
     "moduleResolution": "bundler",
+    "allowArbitraryExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -19,11 +19,12 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
     "types": ["react", "react-dom", "jest", "@types/node", "@types/bun"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "blogs", "content", "public", ".next", ".turbo", "build"]
+  "exclude": ["node_modules", "blogs", "content", "public", ".next", ".turbo", "build", ".local"]
 }

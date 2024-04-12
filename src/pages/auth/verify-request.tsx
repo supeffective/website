@@ -1,13 +1,13 @@
 import { useRouter } from 'next/compat/router'
 
-import { Routes } from '@/v3/config/routes'
-import PageMeta from '@/v3/features/pages/components/PageMeta'
-import { useSession } from '@/v3/features/users/auth/hooks/useSession'
-import { ButtonLink } from '@/v3/lib/components/Button'
-import { abs_url } from '@/v3/lib/components/Links'
-import { LoadingBanner } from '@/v3/lib/components/panels/LoadingBanner'
-import { LoadingRedirectBanner } from '@/v3/lib/components/panels/LoadingRedirectBanner'
-import { base64Decode } from '@/v3/lib/utils/serialization/base64'
+import { Routes } from '@/config/routes'
+import PageMeta from '@/features/pages/components/PageMeta'
+import { useSession } from '@/features/users/auth/hooks/useSession'
+import { ButtonLink } from '@/lib/components/Button'
+import { abs_url } from '@/lib/components/Links'
+import { LoadingBanner } from '@/lib/components/panels/LoadingBanner'
+import { LoadingRedirectBanner } from '@/lib/components/panels/LoadingRedirectBanner'
+import { base64Decode } from '@/lib/utils/serialization/base64'
 
 export default function Page() {
   const auth = useSession()

@@ -377,7 +377,7 @@ textarea::placeholder {
   /* 1 */
   opacity: 1;
   /* 2 */
-  color: theme('colors.gray.400', #9ca3af);
+  color: var(--colors-gray-400);
 }
 
 /*
@@ -427,7 +427,7 @@ video {
 
 /* Make elements with the HTML hidden attribute stay hidden by default */
 [hidden] {
-  display: none;
+  display: none !important;
 }
 
 /* Make elements with the inert attribute inert by default (no pointer events) */

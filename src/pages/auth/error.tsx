@@ -2,10 +2,10 @@
 
 import { useRouter } from 'next/compat/router'
 
-import { Routes } from '@/v3/config/routes'
-import PageMeta from '@/v3/features/pages/components/PageMeta'
-import { ButtonInternalLink } from '@/v3/lib/components/Button'
-import { abs_url } from '@/v3/lib/components/Links'
+import { Routes } from '@/config/routes'
+import PageMeta from '@/features/pages/components/PageMeta'
+import { ButtonInternalLink } from '@/lib/components/Button'
+import { abs_url } from '@/lib/components/Links'
 
 export default function Page() {
   const router = useRouter()

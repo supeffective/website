@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { apiErrors } from '@/v3/lib/utils/types'
+import { apiErrors } from '@/lib/utils/types'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const httpMethod = req.method || 'GET'

@@ -1,0 +1,297 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: var(--menu-height);
+  z-index: 110;
+  white-space: nowrap;
+  --pattern-height: 6px;
+  background: rgba(var(--color-blueberry-darker-rgb), 0.6);
+  /* background: url('/images/patterns2/crystals5.png?s') top left;
+  background-size: 500px 200px; */
+}
+
+.headerTop {
+  padding-left: env(titlebar-area-x, 0);
+  padding-right: calc(100vw - env(titlebar-area-width, 100vw));
+  width: 100vw;
+  height: var(--menu-height);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  background: rgba(var(--color-blueberry-darker-rgb), 1);
+  z-index: 1;
+
+  border-bottom: 2px solid var(--color-blueberry-medium);
+}
+
+.headerTop:after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: var(--pattern-height);
+  background: url('/images/patterns/crystals5.png?s') top left;
+  opacity: 0.8;
+  background-size: 200px 100px;
+  /* border-bottom: 2px solid var(--color-blueberry-dark); */
+}
+
+.headerLogo {
+  display: flex;
+  overflow: visible;
+  align-items: center;
+  padding: 0 1rem;
+  z-index: 2;
+  /* mix-blend-mode: screen; */
+}
+
+.headerLogo img {
+  display: inline-block;
+  vertical-align: middle;
+  height: 56px;
+  min-width: 56px;
+  width: auto;
+  margin: 8px 0 0 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.headerLogo:hover img {
+  transform: scale(1.2);
+  filter: none;
+}
+
+:global(.loading) .headerLogo img {
+  animation: zoom-in-out 2s infinite linear;
+}
+
+@keyframes zoom-in-out {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes spin-zoom {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.headerTop .headerLogo h1 {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 0 0.5rem;
+  font-size: 1.4rem;
+  color: var(--color-white-2);
+}
+
+.menu {
+  position: relative;
+  display: flex;
+  justify-content: right;
+  align-content: center;
+  font-size: 0.8rem;
+  padding: 0 2rem;
+  padding-top: var(--pattern-height);
+}
+
+.menu a,
+.menu .menuItem {
+  display: inline-flex;
+  margin: 0;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0 1rem;
+  align-content: center;
+  justify-content: center;
+  place-items: center;
+  align-items: center;
+  flex-direction: row;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.menu a.brandLink {
+  padding: 0 0.85rem;
+}
+
+.menu a:hover,
+.menu .menuItem:hover,
+.menu a.active,
+.menu .menuItem.active {
+  background: var(--color-blueberry-medium);
+  text-decoration: none;
+}
+
+.header :global(.mobile-only) {
+  display: none;
+}
+
+.menu a i {
+  margin: 0 0 0 0;
+  font-size: 1.4rem;
+}
+
+.menu a span:not(:global(.mobile-only)) {
+  margin: 0 0 0 0.6rem;
+  display: inline-block;
+}
+
+.menuToggle {
+  position: fixed;
+  z-index: 200;
+  display: none;
+  font-size: 10px;
+  line-height: 1px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 200ms ease-in-out;
+  font-family: 'Power Clear', sans-serif;
+  letter-spacing: 2px;
+  /*background: rgba(75, 75, 75, 0.2);*/
+  padding: 10px;
+  top: 15px;
+  right: calc(0px + env(titlebar-area-x, 0px));
+  width: 64px;
+  text-align: center;
+  border-radius: 0.5rem;
+  opacity: 1;
+}
+
+.menuToggle img {
+  transition: all 200ms ease-in-out;
+  transform: rotate(90deg) scaleX(-0.6) scaleY(3.5) translateY(0.15rem);
+  transform-origin: center;
+}
+
+.menuToggle:focus,
+.menuToggle:active {
+  color: inherit;
+}
+
+.menuToggle img {
+  display: inline-block;
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+}
+
+.menuToggle img:hover {
+  opacity: 0.7;
+}
+
+.open .menuToggle img {
+  transform: rotate(90deg) scaleX(0.7) scaleY(0.8);
+}
+
+.navbarOpenOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 101; /* must be lower than header, which is 102 */
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  display: none;
+}
+
+@media only screen and (max-width: 960px) {
+  .headerLogo img {
+    height: 64px;
+    min-width: 64px;
+  }
+
+  .navbarOpenOverlay {
+    display: block;
+  }
+
+  .menuToggle {
+    display: block;
+  }
+
+  .header.open {
+    z-index: 102;
+  }
+
+  .header.open .menu {
+    z-index: 103;
+  }
+
+  .headerTop .menu {
+    display: none;
+    position: fixed;
+    top: 62px;
+    right: 0;
+    min-width: 200px;
+    width: auto;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-shadow: -10px 10px 10px rgb(0 0 0 / 10%);
+
+    background: var(--color-blueberry-darker);
+    box-shadow: 0 10px 10px rgb(0 0 0 / 10%);
+  }
+
+  .headerTop .menu.open {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .headerTop .menu a {
+    display: flex;
+    margin: 0;
+    padding: 1rem 3.5rem 1rem 1.5rem;
+    border-radius: 0;
+    justify-content: flex-start;
+    max-width: 100vw;
+  }
+
+  .headerTop .menu a.brandLink {
+    padding: 1rem 3.5rem 1rem 1.5rem;
+  }
+
+  .header :global(.mobile-only) {
+    display: inline-block;
+  }
+
+  .menu a span:global(.mobile-only) {
+    margin: 0 0 0 0.6rem;
+    display: inline-block;
+  }
+}
+
+.donateBtn i {
+  color: var(--color-pink-3);
+}
+
+.donateBtn:hover i,
+.donateBtn.active i {
+  color: inherit;
+}
+/* 
+.brandIcon {
+  background: #444;
+  color: #fff;
+  padding: 0.35rem;
+  font-size: 20px;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+} */

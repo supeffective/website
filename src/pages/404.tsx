@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
-import PageMeta from '@/v3/features/pages/components/PageMeta'
-import { abs_url } from '@/v3/lib/components/Links'
+import PageMeta from '@/features/pages/components/PageMeta'
+import { abs_url } from '@/lib/components/Links'
 
 const page = () => {
   const randFrom0to4 = Math.floor(Math.random() * 5)

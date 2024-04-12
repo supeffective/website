@@ -1,11 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { getDexesApi } from '@/v3/features/livingdex/commands/getDexesApi'
-import { saveDexApi } from '@/v3/features/livingdex/commands/saveDexApi'
-import { apiGuard } from '@/v3/features/users/auth/serverside/apiGuard'
-import { getSession } from '@/v3/features/users/auth/serverside/getSession'
-import { AuthUser } from '@/v3/features/users/auth/types'
-import { apiErrors } from '@/v3/lib/utils/types'
+import { getDexesApi } from '@/features/livingdex/commands/getDexesApi'
+import { saveDexApi } from '@/features/livingdex/commands/saveDexApi'
+import { apiGuard } from '@/features/users/auth/serverside/apiGuard'
+import { getSession } from '@/features/users/auth/serverside/getSession'
+import { AuthUser } from '@/features/users/auth/types'
+import { apiErrors } from '@/lib/utils/types'
 
 // TODO: convert to Edge runtime when Next-Auth getSession(ctx) supports it
 // https://nextjs.org/docs/api-routes/edge-api-routes

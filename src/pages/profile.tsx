@@ -1,12 +1,12 @@
 import { GetServerSidePropsContext } from 'next'
 
-import PageMeta from '@/v3/features/pages/components/PageMeta'
-import { getSession } from '@/v3/features/users/auth/serverside/getSession'
-import { getActivePatreonMembershipByUserId } from '@/v3/features/users/repository/memberships'
-import { ProfileView } from '@/v3/features/users/views/ProfileView'
-import { abs_url } from '@/v3/lib/components/Links'
-import { Membership } from '@/v3/lib/prisma/types'
-import { serializeObject } from '@/v3/lib/utils/serialization/jsonSerializable'
+import PageMeta from '@/features/pages/components/PageMeta'
+import { getSession } from '@/features/users/auth/serverside/getSession'
+import { getActivePatreonMembershipByUserId } from '@/features/users/repository/memberships'
+import { ProfileView } from '@/features/users/views/ProfileView'
+import { abs_url } from '@/lib/components/Links'
+import { serializeObject } from '@/lib/utils/serialization/jsonSerializable'
+import { Membership } from '@/prisma/types'
 
 const Page = ({ membership }: { membership: any | undefined }) => {
   // TODO: fix use deserializeObject

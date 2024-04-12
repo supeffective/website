@@ -1,0 +1,23 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        ".local/optimized-data/**"
+      ]
+    },
+    "build-vercel": {
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        ".local/optimized-data/**"
+      ]
+    },
+    "typecheck": {
+      "outputs": []
+    },
+    "lint": {}
+  }
+}

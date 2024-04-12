@@ -1,6 +1,6 @@
 name: Publish completed issues to Discord
 env:
-  VERCEL_ENV: development
+  APP_ENV: development
 on:
   issues:
     types:

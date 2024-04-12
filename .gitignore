@@ -74,7 +74,7 @@ yarn-error.log*
 .idea
 *.log
 .cache/
-build/
+/build/
 dist/
 out/
 *.tgz
@@ -104,3 +104,9 @@ mdx-index.json
 src/styles/_variables.css
 src/styles/_variables.scss
 /dataset/
+/public/data/**/*.min.json
+
+## Panda
+styled-system
+styled-system-studio
+*storybook.log

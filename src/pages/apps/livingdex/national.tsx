@@ -1,4 +1,4 @@
-import NationalLivingDexView from '@/v3/features/livingdex/views/NationalLivingDexView'
+import NationalLivingDexView from '@/features/livingdex/views/NationalLivingDexView'
 
 const Page = () => {
   return <NationalLivingDexView />

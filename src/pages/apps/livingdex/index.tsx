@@ -1,14 +1,14 @@
 import { GetServerSidePropsContext } from 'next'
 
-import { getLegacyLivingDexRepository } from '@/v3/features/livingdex/repository'
-import { LivingDexResolvedUserLimits } from '@/v3/features/livingdex/repository/types'
-import { Dashboard } from '@/v3/features/livingdex/views/Dashboard'
-import PageMeta from '@/v3/features/pages/components/PageMeta'
-import { getPageRepository } from '@/v3/features/pages/repository/getPageRepository'
-import { PageEntry } from '@/v3/features/pages/repository/types'
-import { getSession } from '@/v3/features/users/auth/serverside/getSession'
-import { abs_url } from '@/v3/lib/components/Links'
-import { LoadingBanner } from '@/v3/lib/components/panels/LoadingBanner'
+import { getLegacyLivingDexRepository } from '@/features/livingdex/repository'
+import { LivingDexResolvedUserLimits } from '@/features/livingdex/repository/types'
+import { Dashboard } from '@/features/livingdex/views/Dashboard'
+import PageMeta from '@/features/pages/components/PageMeta'
+import { getPageRepository } from '@/features/pages/repository/getPageRepository'
+import { PageEntry } from '@/features/pages/repository/types'
+import { getSession } from '@/features/users/auth/serverside/getSession'
+import { abs_url } from '@/lib/components/Links'
+import { LoadingBanner } from '@/lib/components/panels/LoadingBanner'
 
 const Page = ({ entry, limits }: { entry: PageEntry | null; limits: LivingDexResolvedUserLimits }) => {
   if (!entry) {

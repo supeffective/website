@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { Routes } from '@/v3/config/routes'
-import { apiGuard } from '@/v3/features/users/auth/serverside/apiGuard'
-import { getSession } from '@/v3/features/users/auth/serverside/getSession'
-import { removePatreonMembership } from '@/v3/features/users/repository/memberships'
-import { apiErrors } from '@/v3/lib/utils/types'
+import { Routes } from '@/config/routes'
+import { apiGuard } from '@/features/users/auth/serverside/apiGuard'
+import { getSession } from '@/features/users/auth/serverside/getSession'
+import { removePatreonMembership } from '@/features/users/repository/memberships'
+import { apiErrors } from '@/lib/utils/types'
 
 const unlinkPatreonAccount = async (
   res: NextApiResponse,

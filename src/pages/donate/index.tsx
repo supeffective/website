@@ -1,6 +1,6 @@
-import PageMeta from '@/v3/features/pages/components/PageMeta'
-import { ButtonLink } from '@/v3/lib/components/Button'
-import { abs_url } from '@/v3/lib/components/Links'
+import PageMeta from '@/features/pages/components/PageMeta'
+import { ButtonLink } from '@/lib/components/Button'
+import { abs_url } from '@/lib/components/Links'
 
 const Page = () => {
   return (

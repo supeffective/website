@@ -3,7 +3,7 @@ name: Quality Checks
 env:
   NODE_VERSION: 20.9.0
   PNPM_VERSION: 8.10.5
-  VERCEL_ENV: development
+  APP_ENV: development
 
 on:
   push:

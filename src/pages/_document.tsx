@@ -1,6 +1,6 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 
-import DocumentHeadContent from '@/v3/lib/components/layout/DocumentHeadContent'
+import DocumentHeadContent from '@/lib/components/layout/DocumentHeadContent'
 
 class RootDocument extends Document {
   render() {
