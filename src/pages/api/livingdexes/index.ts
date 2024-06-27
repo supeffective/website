@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
+import { cacheConfig } from '@/config/cache'
 import { getDexesApi } from '@/features/livingdex/commands/getDexesApi'
 import { saveDexApi } from '@/features/livingdex/commands/saveDexApi'
 import { apiGuard } from '@/features/users/auth/serverside/apiGuard'
@@ -40,6 +41,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       Object.entries(result.headers || {}).forEach(([key, value]) => {
         res.setHeader(key, value)
       })
+      res.setHeader('Cache-Control', 'public, s-maxage=' + cacheConfig.apiResponseCacheSeconds)
       res.status(result.statusCode).json(result.data)
       break
     }

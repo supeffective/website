@@ -5,6 +5,7 @@ import { removeDexApi } from '@/features/livingdex/commands/removeDexApi'
 import { apiGuard } from '@/features/users/auth/serverside/apiGuard'
 import { getSession } from '@/features/users/auth/serverside/getSession'
 import { apiErrors } from '@/lib/utils/types'
+import { cacheConfig } from '@/config/cache'
 
 const getDexHandler = async (req: NextApiRequest) => {
   const { id } = req.query
@@ -36,6 +37,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     case 'GET':
       {
         const result = await getDexHandler(req)
+        res.setHeader('Cache-Control', 'public, s-maxage=' + cacheConfig.apiResponseCacheSeconds)
         res.status(result.statusCode).json(result.data)
       }
       break
