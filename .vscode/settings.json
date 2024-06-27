@@ -1,7 +1,6 @@
 {
   "editor.wordWrapColumn": 120,
   "editor.rulers": [120],
-  "typescript.enablePromptUseWorkspaceTsdk": true,
   "editor.codeActionsOnSave": {
     "source.addMissingImports": "explicit",
     "source.organizeImports": "explicit",
