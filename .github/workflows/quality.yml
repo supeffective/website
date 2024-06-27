@@ -1,8 +1,8 @@
 name: Quality Checks
 
 env:
-  NODE_VERSION: 20.9.0
-  PNPM_VERSION: 8.10.5
+  NODE_VERSION: 20.15.0
+  PNPM_VERSION: 9.4.0
   APP_ENV: development
 
 on:
@@ -24,7 +24,7 @@ jobs:
     name: 'Lint, Build & Test'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: 'Setup project'
         uses: ./.github/actions/setup-project
