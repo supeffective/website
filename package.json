@@ -65,18 +65,7 @@
   "peerDependencies": {
     "nodemailer": "^6.9.12"
   },
-  "packageManager": "pnpm@8.15.5",
-  "engines": {
-    "node": ">=18.10.0 <21"
-  },
-  "os": [
-    "darwin",
-    "linux"
-  ],
-  "cpu": [
-    "arm64",
-    "x64"
-  ],
+  "packageManager": "pnpm@9.4.0",
   "prisma": {
     "schema": "src/prisma/schema.prisma"
   }
