@@ -36,6 +36,7 @@ import { PkBoxGroupShinyMixed } from '../components/pkm-box/PkBoxGroupShinyMixed
 import { MarkType, SelectMode, ViewMode } from '../components/pkm-box/pkBoxTypes'
 import { LivingDexContext } from '../state/LivingDexContext'
 import styles from './LivingDexApp.module.css'
+import appConfig from '@/config'
 
 type ActionTool = MarkType | 'all-marks' | 'no-marks' | null // | 'move' | 'delete'
 type SyncState = 'changed' | 'synced'
@@ -61,7 +62,7 @@ interface ModalContent {
   }
 }
 
-const saveTimeout = 2000
+const saveTimeout = appConfig.limits.saveBtnDelay
 
 const setUrlParamRouter = (param: string, value: string | number | null | undefined, router?: NextRouter | null) => {
   if (!router) {

@@ -7,7 +7,7 @@ const ASSETS_CACHE_VERSION_INCREMENTAL = '20230924-01'
 // const assetsCdn = isLocalAssetsEnabled() ? 'http://localhost:4455/assets' : 'https://cdn.supeffective.com/assets'
 const assetsCdn = 'https://cdn.supeffective.com/assets'
 
-const config = {
+const appConfig = {
   dev: isDevelopmentEnv(),
   baseUrl: getBaseUrl(),
   version: {
@@ -60,7 +60,7 @@ const config = {
     imagesUrl: `${assetsCdn}/images`,
   },
   limits: {
-    saveBtnDelay: 2500,
+    saveBtnDelay: 4000,
     maxDexes: isDevelopmentEnv() ? 4 : 20,
     maxPokemonPerBox: 30,
     maxBoxTitleSize: 15,
@@ -68,4 +68,4 @@ const config = {
   },
 }
 
-export default config
+export default appConfig
