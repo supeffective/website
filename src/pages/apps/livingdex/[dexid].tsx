@@ -1,5 +1,6 @@
 import { GetServerSidePropsContext } from 'next'
 
+import { cacheConfig } from '@/config/cache'
 import { getLegacyLivingDexRepository } from '@/features/livingdex/repository'
 import { getPresets } from '@/features/livingdex/repository/presets'
 import { PresetDexMap } from '@/features/livingdex/repository/presets/types'
@@ -47,7 +48,12 @@ const Page = ({ dexData, presets }: { dexData: any; presets: PresetDexMap }) => 
 // with a fresh value. If you refresh the page, you will see the new value.
 // https://nextjs.org/docs/basic-features/data-fetching/overview#getserversideprops-server-side-rendering
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  context.res.setHeader('Cache-Control', 'public, s-maxage=20, stale-while-revalidate=59')
+  // context.res.setHeader('Cache-Control', 'public, s-maxage=20, stale-while-revalidate=59')
+  const swrSecs = cacheConfig.apiResponseCacheSeconds * 2
+  context.res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=' + cacheConfig.apiResponseCacheSeconds + ', stale-while-revalidate=' + swrSecs,
+  )
   const dexid = context.params?.dexid
 
   const dexRepo = getLegacyLivingDexRepository()

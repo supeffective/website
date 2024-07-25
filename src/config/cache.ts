@@ -1,3 +1,3 @@
 export const cacheConfig = {
-  apiResponseCacheSeconds: 30,
+  apiResponseCacheSeconds: 45,
 }
