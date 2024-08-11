@@ -23,7 +23,7 @@ const appConfig = {
       'in your journey as a trainer. Follow us to stay up-to-date.',
   },
   links: {
-    twitter: 'https://mobile.twitter.com/supereffectiv',
+    twitter: 'https://www.threads.net/@supereffective.gg',
     patreon: 'https://www.patreon.com/supereffective',
     github: 'https://github.com/itsjavi',
     github_org: 'https://github.com/supeffective',

@@ -1,5 +1,6 @@
 import config from '@/config'
 import { PropsOf } from '@/lib/utils/types'
+import { AtSignIcon } from 'lucide-react'
 
 import { ExternLink } from '../Links'
 
@@ -12,8 +13,10 @@ export function TwitterLinkIcon({
   children?: any
 } & PropsOf<'a'>) {
   return (
-    <ExternLink href={config.links.twitter} title="Twitter/X" {...rest}>
-      <i className="icon-brand-twitter" />
+    <ExternLink href={config.links.twitter} title="Threads and Instagram" {...rest}>
+      <i>
+        <AtSignIcon width={22} height={22} />
+      </i>
       {children}
     </ExternLink>
   )
