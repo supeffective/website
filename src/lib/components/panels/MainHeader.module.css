@@ -34,9 +34,10 @@
   left: 0;
   width: 100%;
   height: var(--pattern-height);
-  background: url('/images/patterns/crystals5.png?s') top left;
+  background: url('/images/patterns/crystals-top.png?s') top left;
   opacity: 0.8;
-  background-size: 200px 100px;
+  background-size: 100%;
+  /* background-size: 200px 100px; */
   /* border-bottom: 2px solid var(--color-blueberry-dark); */
 }
 
