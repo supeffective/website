@@ -11,7 +11,7 @@ export const LogoWhite = ({ opacity, ...props }: LogoWhiteProps) => {
   return (
     <div className="logoContainer" {...props}>
       <Link href="/">
-        <Image src="/images/logo/logo-white.svg" width="144" height="72" alt="logo" />
+        <Image src="/images/logo/logo-white.svg" width="144" height="77" alt="logo" />
       </Link>
       <style jsx>{`
         .logoContainer {

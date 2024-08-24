@@ -52,6 +52,7 @@ export function ArticleEntry(props: ArticleEntryProps) {
 
   const bannerImageImg = props.bannerImageUrl ? (
     <Image
+      priority
       src={props.bannerImageUrl}
       // width={parseInt(String(props.bannerImage.width))}
       // height={parseInt(String(props.bannerImage.height))}
