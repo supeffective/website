@@ -1,21 +1,18 @@
 {
   "data": {
     "attributes": {
-      "about": null,
-      "created": "2023-06-26T17:27:56.000+00:00",
-      "first_name": "Jota",
-      "full_name": "Jota Test",
-      "image_url": "https://c8.patreon.com/2/200/95758725",
+      "email": "example@example.com",
+      "first_name": "Example",
+      "full_name": "Example Test",
+      "image_url": "https://c8.patreon.com/3/200/95758725",
+      "is_email_verified": true,
       "last_name": "Test",
-      "thumb_url": "https://c8.patreon.com/2/200/95758725",
+      "thumb_url": "https://c8.patreon.com/3/200/95758725",
       "url": "https://www.patreon.com/user?u=95758725",
       "vanity": null
     },
     "id": "95758725",
     "relationships": {
-      "campaign": {
-        "data": null
-      },
       "memberships": {
         "data": [
           {
@@ -29,9 +26,47 @@
   },
   "included": [
     {
-      "attributes": {},
+      "attributes": {
+        "campaign_lifetime_support_cents": 4200,
+        "currently_entitled_amount_cents": 300,
+        "last_charge_date": "2024-07-26T00:28:40.000+00:00",
+        "last_charge_status": "Paid",
+        "lifetime_support_cents": 4200,
+        "patron_status": "active_patron",
+        "pledge_cadence": 1,
+        "pledge_relationship_start": "2023-06-26T17:29:58.443+00:00"
+      },
       "id": "c0ffc5e4-b4cc-4b17-b2b3-1c8e3ca01173",
+      "relationships": {
+        "campaign": {
+          "data": {
+            "id": "9272063",
+            "type": "campaign"
+          },
+          "links": {
+            "related": "https://www.patreon.com/api/oauth2/v2/campaigns/9272063"
+          }
+        },
+        "currently_entitled_tiers": {
+          "data": [
+            {
+              "id": "9094266",
+              "type": "tier"
+            }
+          ]
+        }
+      },
       "type": "member"
+    },
+    {
+      "attributes": {},
+      "id": "9272063",
+      "type": "campaign"
+    },
+    {
+      "attributes": {},
+      "id": "9094266",
+      "type": "tier"
     }
   ],
   "links": {

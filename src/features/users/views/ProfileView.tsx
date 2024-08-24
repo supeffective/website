@@ -2,9 +2,49 @@ import { useSession } from '@/features/users/auth/hooks/useSession'
 import { useSignOut } from '@/features/users/auth/hooks/useSignOut'
 import Button from '@/lib/components/Button'
 import { UserRestrictedArea } from '@/lib/components/panels/UserRestrictedArea'
-import { Membership } from '@/prisma/types'
 
+import { SessionMembership } from '../auth/types'
 import { PatreonMembership } from './PatreonMembership'
+
+export function ProfileTitle({ membership }: { membership: SessionMembership | null }): JSX.Element {
+  if (!membership || !membership.patreonUserId) {
+    return (
+      <h2>
+        <i className="icon-user" /> Profile
+      </h2>
+    )
+  }
+  // "thumb_url": "https://c8.patreon.com/3/200/95758725",
+  // "url": "https://www.patreon.com/user?u=95758725",
+  return (
+    <div>
+      <h2
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '1rem',
+          marginBottom: '0.5rem',
+        }}
+      >
+        <img
+          src={`https://c8.patreon.com/3/200/${membership.patreonUserId}`}
+          alt="Patreon Avatar"
+          style={{ borderRadius: '50%', width: '40px', height: '40px' }}
+        />
+        Profile
+      </h2>
+
+      <a
+        href={`https://www.patreon.com/user?u=${membership.patreonUserId}`}
+        target="_blank"
+        rel="noreferrer"
+        style={{ fontSize: '13px', lineHeight: '1', paddingTop: '0.2rem' }}
+      >
+        Visit your Patreon profile &rarr;
+      </a>
+    </div>
+  )
+}
 
 export function ProfileView(): JSX.Element | null {
   const auth = useSession()
@@ -17,9 +57,7 @@ export function ProfileView(): JSX.Element | null {
   return (
     <UserRestrictedArea>
       <div>
-        <h2>
-          <i className="icon-user" /> Profile
-        </h2>
+        <ProfileTitle membership={auth.membership} />
         <hr />
         {auth.currentUser?.displayName && (
           <>
