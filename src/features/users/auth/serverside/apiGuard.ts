@@ -5,7 +5,7 @@ import { AuthUser, AuthUserState } from '../types'
 export function apiGuard(
   session: AuthUserState | null,
   resourceOwnerId?: string,
-): ApiResponse & ({ allowed: false } | { allowed: true; user: AuthUser }) {
+): ApiResponse & ({ allowed: false } | { allowed: true; user: AuthUser; session: AuthUserState }) {
   if (!session || !session.currentUser || !session.isAuthenticated()) {
     return { ...apiErrors.notAuthenticated, allowed: false }
   }
@@ -24,5 +24,6 @@ export function apiGuard(
     statusCode: 200,
     allowed: true,
     user: session.currentUser,
+    session,
   }
 }

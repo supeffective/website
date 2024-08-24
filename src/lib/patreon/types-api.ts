@@ -1,4 +1,6 @@
-export type PatreonProfileResponse = {
+// FILE NOT USED. KEPT FOR REFERENCE
+
+type PatreonProfileResponse = {
   data: {
     attributes: DataAttributes
     id: string

@@ -5,7 +5,7 @@ import { getDexesApi } from '@/features/livingdex/commands/getDexesApi'
 import { saveDexApi } from '@/features/livingdex/commands/saveDexApi'
 import { apiGuard } from '@/features/users/auth/serverside/apiGuard'
 import { getSession } from '@/features/users/auth/serverside/getSession'
-import { AuthUser } from '@/features/users/auth/types'
+import { AuthUser, AuthUserState } from '@/features/users/auth/types'
 import { apiErrors } from '@/lib/utils/types'
 
 // TODO: convert to Edge runtime when Next-Auth getSession(ctx) supports it
@@ -15,8 +15,8 @@ const listHandler = async (user: AuthUser) => {
   return await getDexesApi(user.uid)
 }
 
-const upsertHandler = async (user: AuthUser, req: NextApiRequest) => {
-  return await saveDexApi(req.body, user.uid)
+const upsertHandler = async (session: AuthUserState, req: NextApiRequest) => {
+  return await saveDexApi(req.body, session)
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -46,7 +46,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       break
     }
     case 'PATCH': {
-      const result = await upsertHandler(guard.user, req)
+      const result = await upsertHandler(guard.session, req)
       res.status(result.statusCode).json(result.data)
       break
     }

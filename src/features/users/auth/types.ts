@@ -63,6 +63,7 @@ export type NextSession = ReturnType<typeof useSession>
 export type AuthUserState = {
   status: AuthStatus
   currentUser: AuthUser | null
+  membership: SessionMembership | null
   isAuthenticated: () => boolean
   isUnauthenticated: () => boolean
   isLoading: () => boolean
@@ -78,3 +79,22 @@ export type NextAuthApi = BaseAuthApi & {
 }
 
 export type AuthApi = NextAuthApi & {}
+
+export type SessionMembership = {
+  patreonCampaignId: string
+  patreonUserId: string | null
+  patreonMemberId: string | null
+  patronStatus: string | null
+  provider: string
+  currentTier: string
+  highestTier: string
+  isSubscriptionTier: boolean
+  totalContributed: number
+  createdAt: Date
+  updatedAt: Date
+  expiresAt: Date | null
+  userId: string
+  overridenRewards: boolean
+  rewardMaxDexes: number
+  rewardFeaturedStreamer: boolean
+}

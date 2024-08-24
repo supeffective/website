@@ -11,11 +11,21 @@ export async function getSession(req?: any, res?: any): Promise<AuthUserState | 
   if (!isServerSide()) {
     throw new Error('getSession() is not available on the client side.')
   }
-  const session: any = await getServerSession(req, res, authOptions)
+
+  const session = await getServerSession(req, res, authOptions)
 
   if (!session) {
     return null
   }
 
-  return convertPrismaUserToAuthUserState(session.user ? (session.user as User) : null)
+  const state = convertPrismaUserToAuthUserState(session.user ? (session.user as User) : null)
+
+  if (!state.currentUser) {
+    return null
+  }
+
+  // TODO: PATREON_MEMBERSHIP
+  state.membership = session.membership
+
+  return state
 }

@@ -1,4 +1,5 @@
 import type { PatreonCampaign, PatreonTierTable } from '../lib/patreon/types'
+// TODO: PATREON_MEMBERSHIP
 
 export const patreonCampaign: PatreonCampaign = {
   campaignId: '9272063',
@@ -11,6 +12,8 @@ export const patreonCampaign: PatreonCampaign = {
     advanced: '9094285',
   },
 }
+
+export const patreonPaidTierIds: string[] = [patreonCampaign.tierIds.basic, patreonCampaign.tierIds.advanced]
 
 export const patreonTiers: PatreonTierTable = {
   [patreonCampaign.tierIds.none]: {

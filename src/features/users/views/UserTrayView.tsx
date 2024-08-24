@@ -8,12 +8,14 @@ type UserTrayViewProps = {
 } & React.HTMLAttributes<HTMLAnchorElement>
 
 export function UserTrayView({ activeClass, returnUrl, ...rest }: UserTrayViewProps): JSX.Element {
+  // TODO: PATREON_MEMBERSHIP
   const auth = useSession()
+  const isPaidMember = auth.membership?.isSubscriptionTier
 
   if (auth.isLoading()) {
     return (
-      <a href="#" style={{ background: 'none !important' }}>
-        Sign In
+      <a href="#" style={{ background: 'none !important', visibility: 'hidden' }}>
+        <i className="icon-user" style={{ marginRight: '0.5rem' }} /> Profile
       </a>
     )
   }
@@ -45,8 +47,33 @@ export function UserTrayView({ activeClass, returnUrl, ...rest }: UserTrayViewPr
   }
 
   return (
-    <SiteLink {...rest} href={Routes.Profile} activeClass={activeClass} tabIndex={0}>
-      <i className="icon-user" style={{ marginRight: '0.5rem' }} /> Profile
+    <SiteLink
+      {...rest}
+      href={Routes.Profile}
+      activeClass={activeClass}
+      tabIndex={0}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+      }}
+    >
+      <i>
+        <i className="icon-user" />
+        {isPaidMember && (
+          <i
+            className="icon-pkg-shiny"
+            style={{
+              color: 'orange',
+              fontSize: '1rem',
+              position: 'absolute',
+              top: '-0.2rem',
+              left: '0.9rem',
+            }}
+          />
+        )}
+      </i>
+      Profile
     </SiteLink>
   )
 }

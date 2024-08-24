@@ -3,8 +3,8 @@ import { dexToLoadedDex, loadedDexToDex, sanitizeDate } from '@/features/livingd
 import createMemoizedCallback from '@/lib/utils/caching/createMemoizedCallback'
 import { PrismaTypes, getPrismaClient } from '@/prisma/getPrismaClient'
 
+import { SessionMembership } from '@/features/users/auth/types'
 import { isShinyLocked } from '../../../lib/data-client/pokemon'
-import { getActivePatreonMembershipByUserId } from '../../users/repository/memberships'
 import {
   DexPokemon,
   LivingDexRepository,
@@ -87,8 +87,7 @@ export const getLegacyLivingDexRepository = createMemoizedCallback((): LivingDex
 
   const repoApi: LivingDexRepository = {
     getById,
-    getLimitsForUser: async (userUid: string): Promise<LivingDexUserLimits> => {
-      const membership = await getActivePatreonMembershipByUserId(userUid)
+    getLimitsForUser: async (membership: SessionMembership | null): Promise<LivingDexUserLimits> => {
       if (membership) {
         return {
           maxDexes: membership.rewardMaxDexes,
@@ -99,9 +98,12 @@ export const getLegacyLivingDexRepository = createMemoizedCallback((): LivingDex
         maxDexes: PATREON_NO_TIER.perks.dexLimit,
       }
     },
-    getResolvedLimitsForUser: async (userUid: string): Promise<LivingDexResolvedUserLimits> => {
-      const dexes = await repoApi.getManyByUser(userUid)
-      const limits = await repoApi.getLimitsForUser(userUid)
+    getResolvedLimitsForUser: async (
+      userId: string,
+      membership: SessionMembership | null,
+    ): Promise<LivingDexResolvedUserLimits> => {
+      const dexes = await repoApi.getManyByUser(userId)
+      const limits = await repoApi.getLimitsForUser(membership)
       return repoApi.calculateResolvedLimits(dexes, limits)
     },
     calculateResolvedLimits: (dexes: LoadedDexList, limits: LivingDexUserLimits) => {

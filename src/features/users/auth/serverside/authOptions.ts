@@ -6,10 +6,13 @@ import PatreonProvider from 'next-auth/providers/patreon'
 import { envVars } from '@/config/env'
 import { getPrismaClient } from '@/prisma/getPrismaClient'
 
+import { getSerializableSessionMembership } from '../../repository/getSerializableSessionMembership'
+import { getActivePatreonMembershipByUserId } from '../../repository/memberships'
 import sendMagicLinkEmail from '../mails/actions/sendMagicLinkEmail'
 import pageConfig from '../pageConfig'
 import { generateRandomToken } from './generateRandomToken'
 
+// @see https://next-auth.js.org/configuration/callbacks
 const authOptions: AuthOptions = {
   session: {
     strategy: 'database',
@@ -21,9 +24,16 @@ const authOptions: AuthOptions = {
     updateAge: 24 * 60 * 60, // 24 hours
   },
   callbacks: {
-    session: async (params) => {
-      params.session.user = params.user
-      return Promise.resolve(params.session)
+    session: async ({ session, token, user }) => {
+      // TODO: PATREON_MEMBERSHIP
+      // @see https://next-auth.js.org/getting-started/example#extensibility
+      //
+      // Send properties to the client, like an access_token from a provider.
+      const membership = await getActivePatreonMembershipByUserId(user.id)
+      session.membership = getSerializableSessionMembership(membership)
+      session.user = user
+
+      return Promise.resolve(session)
     },
     async redirect({ url, baseUrl }) {
       // Allows relative callback URLs

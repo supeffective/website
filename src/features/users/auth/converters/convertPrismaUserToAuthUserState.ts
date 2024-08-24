@@ -7,6 +7,7 @@ export function convertPrismaUserToAuthUserState(prismaUser: User | null): AuthU
   if (!prismaUser) {
     return {
       status: AuthStatus.Unauthenticated,
+      membership: null,
       currentUser: null,
       isAuthenticated: () => false,
       isUnauthenticated: () => true,
@@ -20,6 +21,7 @@ export function convertPrismaUserToAuthUserState(prismaUser: User | null): AuthU
   return {
     status: AuthStatus.Authenticated,
     currentUser: user,
+    membership: null,
     isAuthenticated: () => true,
     isUnauthenticated: () => false,
     isLoading: () => false,

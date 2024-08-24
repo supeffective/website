@@ -1,3 +1,4 @@
+import { AuthUserState, SessionMembership } from '@/features/users/auth/types'
 import { BaseUserDocument } from '@/prisma/types'
 
 export const DEX_SCHEMA_VERSION = 3
@@ -69,8 +70,11 @@ export type LivingDexResolvedUserLimits = LivingDexUserLimits & {
 
 export type LivingDexRepository = {
   getById: (id: string) => Promise<LoadedDex | null>
-  getLimitsForUser: (userUid: string) => Promise<LivingDexUserLimits>
-  getResolvedLimitsForUser: (userUid: string) => Promise<LivingDexResolvedUserLimits>
+  getLimitsForUser: (membership: SessionMembership | null) => Promise<LivingDexUserLimits>
+  getResolvedLimitsForUser: (
+    userId: string,
+    membership: SessionMembership | null,
+  ) => Promise<LivingDexResolvedUserLimits>
   calculateResolvedLimits: (dexes: LoadedDex[], limits: LivingDexUserLimits) => LivingDexResolvedUserLimits
   getManyByUser: (userUid: string) => Promise<LoadedDexList>
   import: (dexes: LoadedDex[], userId: string) => Promise<number>

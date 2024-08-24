@@ -11,6 +11,7 @@ export function convertNextSessionToAuthApi(nextSession: NextSession): AuthApi {
 
   return {
     currentUser: nextUser,
+    membership: nextSession.data?.membership || null,
     isAuthenticated: () => nextUser !== null && nextSession.status === 'authenticated',
     isUnauthenticated: () => nextUser === null && nextSession.status === 'unauthenticated',
     status: nextSession.status as AuthStatus,

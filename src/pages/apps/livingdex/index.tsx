@@ -48,7 +48,10 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     }
   }
 
-  const resolvedLimits = await getLegacyLivingDexRepository().getResolvedLimitsForUser(session.currentUser.uid)
+  const resolvedLimits = await getLegacyLivingDexRepository().getResolvedLimitsForUser(
+    session.currentUser.uid,
+    session.membership,
+  )
 
   return {
     props: {

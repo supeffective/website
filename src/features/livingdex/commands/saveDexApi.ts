@@ -4,12 +4,13 @@ import { jsonDecode } from '@/lib/utils/serialization/jsonSerializable'
 import { ApiResponse, apiErrors } from '@/lib/utils/types'
 import { isValidIdSchema } from '@/lib/validation/schemas'
 
+import { AuthUserState, SessionMembership } from '@/features/users/auth/types'
 import { getLegacyLivingDexRepository } from '../repository/index'
 import { LoadedDexSchema } from '../repository/schemas'
 import { LoadedDex, NullableDexPokemon } from '../repository/types'
 
-async function _canCreateMoreDexes(dexes: LoadedDex[], currentUserId: string): Promise<boolean> {
-  const limits = await getLegacyLivingDexRepository().getLimitsForUser(currentUserId)
+async function _canCreateMoreDexes(dexes: LoadedDex[], membership: SessionMembership | null): Promise<boolean> {
+  const limits = await getLegacyLivingDexRepository().getLimitsForUser(membership)
   return dexes.length < limits.maxDexes
 }
 
@@ -46,9 +47,10 @@ function sanitizeDex(dex: LoadedDex): LoadedDex {
   }
 }
 
-export const saveDexApi = async (data: string | undefined | null, currentUserId: string): Promise<ApiResponse> => {
+export const saveDexApi = async (data: string | undefined | null, session: AuthUserState): Promise<ApiResponse> => {
   const dex: LoadedDex = sanitizeDex(jsonDecode(data || '{}'))
   const validation = LoadedDexSchema.safeParse(dex)
+  const currentUserId = session.currentUser?.uid
 
   if (!isValidIdSchema(currentUserId)) {
     return apiErrors.notAuthorized
@@ -66,7 +68,7 @@ export const saveDexApi = async (data: string | undefined | null, currentUserId:
   const userDexes = await getLegacyLivingDexRepository().getManyByUser(currentUserId)
   const isNew = dex.id === undefined || dex.id === null
 
-  if (isNew && !_canCreateMoreDexes(userDexes, currentUserId)) {
+  if (isNew && !_canCreateMoreDexes(userDexes, session.membership)) {
     return {
       statusCode: 400,
       data: {

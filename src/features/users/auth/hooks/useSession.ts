@@ -7,6 +7,7 @@ export function useSession(): AuthUserState {
   return {
     status: auth.status,
     currentUser: auth.currentUser,
+    membership: auth.membership,
     isAuthenticated: auth.isAuthenticated,
     isUnauthenticated: auth.isUnauthenticated,
     isLoading: auth.isLoading,
