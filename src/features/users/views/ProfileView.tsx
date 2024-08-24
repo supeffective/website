@@ -60,6 +60,10 @@ export function ProfileView(): JSX.Element | null {
     await signOut(true, '/login')
   }
 
+  if (auth.membership) {
+    auth.membership.avatarUrl = auth.membership.avatarUrl || auth.currentUser?.photoUrl || undefined
+  }
+
   return (
     <UserRestrictedArea>
       <div>

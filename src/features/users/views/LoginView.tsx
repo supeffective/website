@@ -6,9 +6,11 @@ import { Routes } from '@/config/routes'
 import { useSession } from '@/features/users/auth/hooks/useSession'
 import EmailSigninView from '@/features/users/views/EmailSigninView'
 import TokenSignInView from '@/features/users/views/TokenSignInView'
+import Button from '@/lib/components/Button'
 import { SiteLink } from '@/lib/components/Links'
 import { LoadingBanner } from '@/lib/components/panels/LoadingBanner'
 import { LoadingRedirectBanner } from '@/lib/components/panels/LoadingRedirectBanner'
+import { PatreonButton } from '../components/PatreonButtons'
 
 export function LoginView({ csrfToken }: { csrfToken: string | null }): JSX.Element {
   const router = useRouter()
@@ -64,22 +66,51 @@ export function LoginView({ csrfToken }: { csrfToken: string | null }): JSX.Elem
         progress and use all other upcoming features of the website.
       </p>
       {!tokenMode && (
-        <>
+        <div>
           <EmailSigninView csrfToken={csrfToken} />
-          <p>
-            Do you want to use the token you got via email?{' '}
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault()
-                setTokenMode(true)
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '1rem 0',
+              gap: '1rem',
+              padding: '0 1rem',
+            }}
+          >
+            <hr
+              style={{
+                border: 'none',
+                height: '1px',
+                flex: '1',
+                borderBottom: '1px dotted currentColor',
+                opacity: '0.5',
               }}
-              style={{ color: 'var(--color-link)', textDecoration: 'underline' }}
-            >
-              Sign In with Token
-            </a>
-          </p>
-        </>
+            />
+            or
+            <hr
+              style={{
+                border: 'none',
+                height: '1px',
+                flex: '1',
+                borderBottom: '1px dotted currentColor',
+                opacity: '0.5',
+              }}
+            />
+          </div>
+          <Button
+            title="Sign In with the token you got via email"
+            onClick={(e: any) => {
+              e.preventDefault()
+              setTokenMode(true)
+            }}
+          >
+            Sign In with Token from Email
+          </Button>
+          <PatreonButton style={{}} className="btn">
+            Sign In with Patreon
+          </PatreonButton>
+        </div>
       )}
       {tokenMode && <TokenSignInView csrfToken={csrfToken} />}
       <p style={{ fontStyle: 'italic', fontSize: '0.9rem' }}>

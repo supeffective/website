@@ -3,16 +3,17 @@ import { signIn } from 'next-auth/react'
 import { Routes } from '@/config/routes'
 import Button from '@/lib/components/Button'
 
-export function PatreonButton() {
+export function PatreonButton({ children, ...rest }: { children?: string } & any) {
   return (
     <Button
       className="btn btn-secondary"
       style={{ padding: '5px 15px' }}
+      {...rest}
       onClick={() => {
         signIn('patreon', { callbackUrl: window.location.origin + '/profile?patreon=ok' })
       }}
     >
-      Link your Patreon account
+      {children || 'Link your Patreon account'}
     </Button>
   )
 }

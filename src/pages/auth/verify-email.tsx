@@ -46,7 +46,7 @@ export default function Page({ csrfToken }: { csrfToken: string | null }) {
               Sign In with Email <i className="icon-email" />
             </h2>
             <p>
-              <b style={{ color: 'darkgoldenrod' }}>Login via external providers is deprecated.</b>
+              <b style={{ color: 'darkgoldenrod' }}>You are logging in with an external provider.</b>
               <br />
               <br />
               To continue, please verify your email by signing in with <br />
