@@ -16,6 +16,7 @@ export function ProfileTitle({ membership }: { membership: SessionMembership | n
   }
   // "thumb_url": "https://c8.patreon.com/3/200/95758725",
   // "url": "https://www.patreon.com/user?u=95758725",
+  const avatarUrl = membership.avatarUrl || `https://c8.patreon.com/3/200/${membership.patreonUserId}`
   return (
     <div>
       <h2
@@ -27,9 +28,14 @@ export function ProfileTitle({ membership }: { membership: SessionMembership | n
         }}
       >
         <img
-          src={`https://c8.patreon.com/3/200/${membership.patreonUserId}`}
+          src={avatarUrl}
           alt="Patreon Avatar"
-          style={{ borderRadius: '50%', width: '40px', height: '40px' }}
+          style={{
+            borderRadius: '50%',
+            width: '44px',
+            height: '44px',
+            border: '1px solid #fff',
+          }}
         />
         Profile
       </h2>

@@ -1,11 +1,12 @@
 import { findHighestPatreonTier } from '@/lib/patreon/findHighestPatreonTier'
-import { PatreonTier, PatreonUserData } from '@/lib/patreon/types'
+import { PatreonResolvedMembership, PatreonTier, PatreonUserData } from '@/lib/patreon/types'
 import { Membership } from '@/prisma/types'
 
 import { patreonCampaign } from '@/config/patreon'
 import { dbCacheService } from '@/lib/cache-service/db-cache-service'
 import { getPatreonClient } from '@/lib/patreon/getPatreonClient'
 import { getPrismaClient } from '../../../prisma/getPrismaClient'
+import { SessionMembership } from '../auth/types'
 
 type OauthData = {
   accessToken: string
@@ -20,8 +21,9 @@ class PatreonAccessTokenExpiredError extends Error {
     this.name = 'PatreonAccessTokenExpiredError'
   }
 }
-
-export async function getActivePatreonMembershipByUserId(userId: string): Promise<Membership | null> {
+export async function getActivePatreonMembershipByUserId(
+  userId: string,
+): Promise<(Membership & Partial<SessionMembership>) | null> {
   // TODO: PATREON_MEMBERSHIP
   // TODO cache API requests for 1-2h instead of saving memberships on DB, because pledges get cancelled and we dont sync them currently
   const membership = await getPatreonMembershipByUserId(userId)
@@ -30,7 +32,8 @@ export async function getActivePatreonMembershipByUserId(userId: string): Promis
     // If the membership is linked to a Patreon user, we cannot trust the data in the DB (it might be outdated)
     // It it is not linked, it means it is a custom membership and we can trust the data
     // If there is no membership, we need to fetch it from Patreon if the user has linked their account
-    const membershipFromApi = await getPatreonMembershipViaOauth(userId)
+    const membershipResp = await getPatreonMembershipViaOauth(userId)
+    const membershipFromApi = membershipResp.membership
     if (!membershipFromApi) {
       return null
     }
@@ -46,6 +49,7 @@ export async function getActivePatreonMembershipByUserId(userId: string): Promis
         rewardMaxDexes: Math.max(membership.rewardMaxDexes, membershipFromApi.rewardMaxDexes),
         rewardFeaturedStreamer: false, // FEATURE NOT IMPLEMENTED YET
       },
+      avatarUrl: membershipResp.response?.data.attributes.thumb_url,
     }
   }
 
@@ -131,37 +135,40 @@ async function fetchPatreonIdAndTier(userId: string): Promise<[string, PatreonUs
   return [profile.data.id, profile, findHighestPatreonTier(profile.campaignStatus.tierIds)]
 }
 
-async function getPatreonMembershipViaOauth(userId: string): Promise<Membership | null> {
+async function getPatreonMembershipViaOauth(userId: string): Promise<PatreonResolvedMembership> {
   const expiresIn = 3600 * 2 // 2 hours
   const cacheKey = getCacheKey(userId)
-  const cachedEntry = await dbCacheService.get<Membership>(cacheKey)
+  const cachedEntry = await dbCacheService.get<PatreonResolvedMembership>(cacheKey)
 
-  if (!cachedEntry || cachedEntry.isStale) {
-    const membership = await _uncached_getPatreonMembershipViaOauth(userId)
+  if (!cachedEntry || cachedEntry.isStale || !cachedEntry.deserializedValue?.response) {
+    const [response, membership] = await _uncached_getPatreonMembershipViaOauth(userId)
+    const data = { response, membership }
 
     if (membership) {
       console.info(`dbCacheService cache MISS: Patreon membership for user ${userId}. Storing.`)
-      await dbCacheService.put(cacheKey, membership, expiresIn)
+      await dbCacheService.put(cacheKey, data, expiresIn)
     }
 
-    return membership
+    return data
   }
 
   // console.info(`dbCacheService cache HIT: Patreon membership for user ${userId}.`)
   return cachedEntry.deserializedValue
 }
 
-async function _uncached_getPatreonMembershipViaOauth(userId: string): Promise<Membership | null> {
+async function _uncached_getPatreonMembershipViaOauth(
+  userId: string,
+): Promise<[PatreonUserData, Membership] | [null, null]> {
   try {
     const [patronId, patronData, highestEntitledTier] = await fetchPatreonIdAndTier(userId)
 
     if (!highestEntitledTier || !patronId) {
-      return null
+      return [null, null]
     }
 
     const memberCampaignData = patronData.campaignStatus.campaign?.attributes
 
-    return {
+    const membership: Membership = {
       id: `API-${patreonCampaign.campaignId}_${userId}`,
       provider: 'patreon',
       userId,
@@ -179,11 +186,13 @@ async function _uncached_getPatreonMembershipViaOauth(userId: string): Promise<M
       overridenRewards: true,
       rewardMaxDexes: highestEntitledTier.perks.dexLimit,
       rewardFeaturedStreamer: false, // FEATURE NOT IMPLEMENTED YET
-    } satisfies Membership
+    }
+
+    return [patronData, membership]
   } catch (error) {
     if (error instanceof PatreonAccessTokenExpiredError) {
       console.error(`CRITICAL ERROR: Patreon access token expired for user ${userId}. We need to handle this bug.`)
-      return null
+      return [null, null]
     }
 
     throw error

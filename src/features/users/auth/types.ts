@@ -97,4 +97,5 @@ export type SessionMembership = {
   overridenRewards: boolean
   rewardMaxDexes: number
   rewardFeaturedStreamer: boolean
+  avatarUrl?: string
 }
