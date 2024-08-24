@@ -1,5 +1,4 @@
 import { signIn } from 'next-auth/react'
-import { HTMLProps } from 'react'
 
 import { Routes } from '@/config/routes'
 import Button from '@/lib/components/Button'
@@ -18,7 +17,7 @@ export function PatreonButton() {
   )
 }
 
-export function PatreonUnlinkButton({ memberId }: { memberId: string | null }) {
+export function PatreonUnlinkButton({ patreonUserId }: { patreonUserId: string | null }) {
   return (
     <form
       method="POST"
@@ -26,7 +25,7 @@ export function PatreonUnlinkButton({ memberId }: { memberId: string | null }) {
       onSubmit={(e: any) => {
         if (
           !window.confirm(
-            'Are you sure you want to unlink your Patreon account? You will lose your Patreon rewards, but your existing data will remain intact.',
+            'Are you sure you want to unlink your Patreon account? You will lose your Patreon rewards (until you link it again), but your existing data will remain intact.',
           )
         ) {
           e.preventDefault()
@@ -34,7 +33,7 @@ export function PatreonUnlinkButton({ memberId }: { memberId: string | null }) {
         }
       }}
     >
-      <Button type="submit" name="patreonMemberId" value={memberId || ''} style={{ padding: '5px 15px' }}>
+      <Button type="submit" name="patreonUserId" value={patreonUserId || ''} style={{ padding: '5px 15px' }}>
         Unlink Patreon account
       </Button>
     </form>

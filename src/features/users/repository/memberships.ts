@@ -330,13 +330,14 @@ async function getPatreonMembershipByUserId(userId: string): Promise<Membership 
 //   return record.count
 // }
 
-export async function removePatreonMembership(userId: string, patreonMemberId: string | null): Promise<number> {
+export async function removePatreonMembership(userId: string, patreonUserId: string | null): Promise<number> {
   const client = getPrismaClient()
 
   const result = await client.membership.deleteMany({
     where: {
       userId,
-      patreonMemberId,
+      patreonUserId,
+      provider: 'patreon',
       overridenRewards: false,
     },
   })

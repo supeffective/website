@@ -96,9 +96,12 @@ export class PatreonClient {
 
     const data = await this.fetchJsonThrottled(accessToken, requestUri)
 
-    if (!data || !data.included || !Array.isArray(data.included) || data.included.length === 0) {
+    if (!data || typeof data !== 'object') {
+      console.error('Invalid response payload: Included data is missing or empty.', data)
       throw new PatreonClientResponsePayloadError('Invalid response payload: Included data is missing or empty.')
     }
+
+    const includedData = data.included || []
 
     const dataWithCampaignHash = {
       ...data,
@@ -106,8 +109,8 @@ export class PatreonClient {
     }
 
     // Iterate through included memberships and find the one that matches the campaign to put it to the top of the array
-    for (let i = 0; i < data.included.length; i++) {
-      const entry = data.included[i]
+    for (let i = 0; i < includedData.length; i++) {
+      const entry = includedData[i]
 
       if (entry.type === 'member' && entry.relationships?.campaign?.data?.id !== undefined) {
         // The below procedure will hash the campaign id to the entry, so that we can find it later easily

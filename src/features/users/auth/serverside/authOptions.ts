@@ -29,7 +29,7 @@ const authOptions: AuthOptions = {
       // @see https://next-auth.js.org/getting-started/example#extensibility
       //
       // Send properties to the client, like an access_token from a provider.
-      const membership = await getActivePatreonMembershipByUserId(user.id)
+      const membership = user?.id ? await getActivePatreonMembershipByUserId(user.id) : null
       session.membership = getSerializableSessionMembership(membership)
       session.user = user
 

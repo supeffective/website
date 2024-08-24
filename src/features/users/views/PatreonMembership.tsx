@@ -19,7 +19,7 @@ export function PatreonMembership(): JSX.Element | null {
 
   const membership = auth.membership ?? createSessionMembershipPlaceholder(auth.currentUser.uid)
   const hasMembership = membership !== null
-  const hasLinkedPatreon = membership.patreonMemberId !== null
+  const hasLinkedPatreon = membership.patreonUserId !== null
   const _expirationDate = membership.expiresAt ? new Date(membership.expiresAt) : null
   const isPaidMember = membership.isSubscriptionTier
 
@@ -93,7 +93,7 @@ export function PatreonMembership(): JSX.Element | null {
       {hasLinkedPatreon && (
         <>
           <div>
-            <PatreonUnlinkButton memberId={membership.patreonMemberId} />
+            <PatreonUnlinkButton patreonUserId={membership.patreonUserId} />
           </div>
         </>
       )}

@@ -9,9 +9,9 @@ import { apiErrors } from '@/lib/utils/types'
 const unlinkPatreonAccount = async (
   res: NextApiResponse,
   userId: string,
-  patreonMemberId: string | null,
+  patreonUserId: string | null,
 ): Promise<boolean> => {
-  const changedRecords = await removePatreonMembership(userId, patreonMemberId)
+  const changedRecords = await removePatreonMembership(userId, patreonUserId)
 
   return changedRecords > 0
 }
@@ -33,9 +33,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return
   }
 
-  const memberId = req.body.patreonMemberId || null
+  const memberId = req.body.patreonUserId || null
   if (!memberId) {
-    console.error('body.patreonMemberId is null in unlink call')
+    console.error('body.patreonUserId is null in unlink call')
     res.redirect(Routes.Profile + '?status=error&provider=patreon&action=unlink')
     return
   }
