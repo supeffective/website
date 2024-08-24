@@ -111,3 +111,13 @@ model LivingDex {
   lastUpdateTime DateTime
   user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+
+model FetchCache {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  createdAt DateTime
+  updatedAt DateTime
+  expiresAt DateTime
+}
