@@ -13,16 +13,14 @@ export default function Page() {
   let errorMessage: React.ReactNode = 'Unexpected sign in error'
   switch (String(error).toLowerCase()) {
     case 'verification':
-      errorMessage = 'Sign In token is invalid, expired or has been already used'
+      errorMessage = 'Sign In token is invalid, expired or has been already used.'
       break
     case 'emailsignin':
       errorMessage = 'Cannot send the Sign In link at this time due to an internal error. Please try again later.'
       break
     case 'oauthaccountnotlinked':
-      errorMessage = 'The OAuth account might be already linked to another user'
-      break
-    case 'emailsignin':
-      errorMessage = 'Cannot send the Sign In link at this time due to an internal error. Please try again later.'
+      errorMessage =
+        'The email of this OAuth provider is already linked to another account. Please use Sign In via Email to login with that account.'
       break
     default:
       errorMessage = <>Unexpected sign up error{error ? <i>{`: ${error}`}</i> : ''}</>
@@ -41,8 +39,7 @@ export default function Page() {
           <div className={'page-container bordered-container inner-blueberry text-center'}>
             <h2>Sign In Error</h2>
             <p>❌ {errorMessage}</p>
-            <p>Try logging in again.</p>
-            <ButtonInternalLink href={Routes.Login}>Login</ButtonInternalLink>
+            <ButtonInternalLink href={Routes.Login}>Go to Login</ButtonInternalLink>
           </div>
         </article>
       </div>
