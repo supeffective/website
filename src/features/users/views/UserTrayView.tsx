@@ -14,7 +14,17 @@ export function UserTrayView({ activeClass, returnUrl, ...rest }: UserTrayViewPr
 
   if (auth.isLoading()) {
     return (
-      <a href="#" style={{ background: 'none !important', visibility: 'hidden' }}>
+      <a
+        href="#"
+        style={{
+          background: 'none !important',
+          visibility: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem',
+          minWidth: '114px',
+        }}
+      >
         <i className="icon-user" style={{ marginRight: '0.5rem' }} /> Profile
       </a>
     )
@@ -27,6 +37,12 @@ export function UserTrayView({ activeClass, returnUrl, ...rest }: UserTrayViewPr
         activeClass={activeClass}
         href={Routes.Login + (returnUrl ? '?s=' + returnUrl : '')}
         tabIndex={0}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem',
+          minWidth: '114px',
+        }}
       >
         Sign In
       </SiteLink>
@@ -40,6 +56,12 @@ export function UserTrayView({ activeClass, returnUrl, ...rest }: UserTrayViewPr
         activeClass={activeClass}
         href={Routes.VerifyEmail + ('?email=' + encodeURIComponent(auth.currentUser?.email || ''))}
         tabIndex={0}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem',
+          minWidth: '114px',
+        }}
       >
         <i className="icon-email" style={{ marginRight: '0.5rem' }} /> Verify Email
       </SiteLink>
@@ -56,6 +78,7 @@ export function UserTrayView({ activeClass, returnUrl, ...rest }: UserTrayViewPr
         display: 'flex',
         alignItems: 'center',
         gap: '0.5rem',
+        minWidth: '114px',
       }}
     >
       <i>
