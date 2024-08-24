@@ -1,5 +1,6 @@
 import { Resend } from 'resend'
 
+import { isDevelopmentEnv } from '@/lib/utils/env'
 import { EmailMessage, EmailProvider, EmailProviderConfig, EmailSenderFactory } from '../types'
 
 const sendMailFactory: EmailSenderFactory = (config: EmailProviderConfig) => {
@@ -20,21 +21,45 @@ const sendMailFactory: EmailSenderFactory = (config: EmailProviderConfig) => {
       return message.body.html
     }
 
+    const payloadWithHtml = {
+      to: message.to,
+      from: message.from || config.defaultFrom,
+      subject: message.subject,
+      html: renderHtml(),
+      text: renderText(),
+      bcc: message.bcc,
+      // react: it works with React components! try react-email
+      cc: message.cc,
+    }
+
+    // const payload2 = {
+    //   to: message.to,
+    //   from: message.from || config.defaultFrom,
+    //   subject: message.subject,
+    //   html: renderText(),
+    //   text: renderText(),
+    //   // bcc: message.bcc,
+    //   // react: it works with React components! try react-email
+    //   // cc: message.cc,
+    // }
+
+    if (isDevelopmentEnv()) {
+      console.info('RESEND: Payload', renderText())
+    }
     try {
-      const result = await resendApi.emails.send({
-        to: message.to,
-        from: message.from || config.defaultFrom,
-        subject: message.subject,
-        html: renderHtml(),
-        text: renderText(),
-        bcc: message.bcc,
-        // react: it works with React components! try react-email
-        cc: message.cc,
-      })
+      const result = await resendApi.emails.send(payloadWithHtml)
+
+      if (result.error) {
+        console.error(result.data, result.error)
+        throw result.error
+      }
+
+      // console.info('RESEND: Email sent successfully', result.data)
       return {
         success: true,
       }
     } catch (error) {
+      console.error('CRITICAL ERROR: RESEND: Error sending email', error)
       return {
         success: false,
         errorMessage: String(error),
