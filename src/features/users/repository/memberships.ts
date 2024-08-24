@@ -147,7 +147,7 @@ async function getPatreonMembershipViaOauth(userId: string): Promise<Membership 
     return membership
   }
 
-  console.info(`dbCacheService cache HIT: Patreon membership for user ${userId}.`)
+  // console.info(`dbCacheService cache HIT: Patreon membership for user ${userId}.`)
   return cachedEntry.deserializedValue
 }
 

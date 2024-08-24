@@ -23,8 +23,6 @@ export function PatreonMembership(): JSX.Element | null {
   const _expirationDate = membership.expiresAt ? new Date(membership.expiresAt) : null
   const isPaidMember = membership.isSubscriptionTier
 
-  console.log('PatreonMembership', { membership })
-
   return (
     <UserRestrictedArea>
       <p>
