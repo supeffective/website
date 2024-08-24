@@ -9,6 +9,7 @@
     "build": "next build && next-sitemap",
     "build-vercel": "pnpm typecheck && pnpm db-migrate && pnpm build",
     "db-migrate": "pnpm prisma migrate deploy",
+    "db-studio": "pnpm prisma studio",
     "dev": "rm -rf ./.next && PORT=3001 next dev",
     "format": "sort-package-json && prettier --ignore-path '.prettierignore' --write ./",
     "lint": "pnpm typecheck && prettier --ignore-path '.prettierignore' --check ./",

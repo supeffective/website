@@ -1,13 +1,19 @@
-volumes:
-  postgresql_data:
 services:
-  db:
-    image: postgres:16
-    environment:
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mysecret
-      POSTGRES_DB: websitedb
+  postgres:
+    image: postgres:16-alpine
     ports:
-      - '5432:5432'
+      - 5432:5432 # postgresql://myuser:mysecret@127.0.0.1:5432/supereffectivedb?search_path=public
     volumes:
-      - 'postgresql_data:/var/lib/postgresql/data'
+      - './.local/postgres:/var/lib/postgresql/data'
+      - './.local/postgres-dumps:/usr/src/data-dumps'
+    environment:
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mysecret
+      - POSTGRES_DB=supereffectivedb
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - 5480:80 # http://localhost:5480
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=myuser@example.com # login for the UI
+      - PGADMIN_DEFAULT_PASSWORD=mysecret
