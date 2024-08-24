@@ -7,6 +7,7 @@ import { PresetDexMap } from '@/features/livingdex/repository/presets/types'
 import { LoadedDex } from '@/features/livingdex/repository/types'
 import LivingDexApp from '@/features/livingdex/views/LivingDexApp'
 import PageMeta from '@/features/pages/components/PageMeta'
+import LivingDexLayout from '@/lib/components/layout/LivingDexLayout'
 import { abs_url } from '@/lib/components/Links'
 import { getGameSetByGameId } from '@/lib/data-client/game-sets'
 import { logger } from '@/lib/utils/logger'
@@ -25,17 +26,19 @@ const Page = ({ dexData, presets }: { dexData: any; presets: PresetDexMap }) => 
     `dex-boxsize-${gameSet.storage?.boxCapacity}`
 
   return (
-    <div style={{ maxWidth: 'none' }} className={containerClasses}>
-      <PageMeta
-        metaTitle={metaTitle}
-        metaDescription={metaDescription}
-        imageUrl={abs_url('/images/og-image.png')}
-        robots={'noindex, nofollow'}
-        canonicalUrl={abs_url('/apps/livingdex/' + dex.id)}
-        lang={'en'}
-      />
-      <LivingDexApp loadedDex={dex} presets={presets} />
-    </div>
+    <LivingDexLayout>
+      <div style={{ maxWidth: 'none' }} className={containerClasses}>
+        <PageMeta
+          metaTitle={metaTitle}
+          metaDescription={metaDescription}
+          imageUrl={abs_url('/images/og-image.png')}
+          robots={'noindex, nofollow'}
+          canonicalUrl={abs_url('/apps/livingdex/' + dex.id)}
+          lang={'en'}
+        />
+        <LivingDexApp loadedDex={dex} presets={presets} />
+      </div>
+    </LivingDexLayout>
   )
 }
 

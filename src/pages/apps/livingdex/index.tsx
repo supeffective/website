@@ -7,6 +7,7 @@ import PageMeta from '@/features/pages/components/PageMeta'
 import { getPageRepository } from '@/features/pages/repository/getPageRepository'
 import { PageEntry } from '@/features/pages/repository/types'
 import { getSession } from '@/features/users/auth/serverside/getSession'
+import LivingDexLayout from '@/lib/components/layout/LivingDexLayout'
 import { abs_url } from '@/lib/components/Links'
 import { LoadingBanner } from '@/lib/components/panels/LoadingBanner'
 
@@ -16,19 +17,21 @@ const Page = ({ entry, limits }: { entry: PageEntry | null; limits: LivingDexRes
   }
 
   return (
-    <div className={'page-container '} style={{ maxWidth: 'none' }}>
-      <PageMeta
-        metaTitle={entry.metaTitle}
-        metaDescription={entry.metaDescription}
-        robots={entry.robots}
-        imageUrl={abs_url('/images/og-image.png')}
-        canonicalUrl={abs_url('/apps/livingdex')}
-        lang={'en'}
-      />
-      <>
-        <Dashboard limits={limits} />
-      </>
-    </div>
+    <LivingDexLayout>
+      <div className={'page-container '} style={{ maxWidth: 'none' }}>
+        <PageMeta
+          metaTitle={entry.metaTitle}
+          metaDescription={entry.metaDescription}
+          robots={entry.robots}
+          imageUrl={abs_url('/images/og-image.png')}
+          canonicalUrl={abs_url('/apps/livingdex')}
+          lang={'en'}
+        />
+        <>
+          <Dashboard limits={limits} />
+        </>
+      </div>
+    </LivingDexLayout>
   )
 }
 

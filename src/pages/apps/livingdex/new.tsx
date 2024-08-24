@@ -15,6 +15,7 @@ import PageMeta from '@/features/pages/components/PageMeta'
 import { useSession } from '@/features/users/auth/hooks/useSession'
 import { getSession } from '@/features/users/auth/serverside/getSession'
 import { ButtonInternalLink } from '@/lib/components/Button'
+import LivingDexLayout from '@/lib/components/layout/LivingDexLayout'
 import { abs_url } from '@/lib/components/Links'
 import { LoadingBanner } from '@/lib/components/panels/LoadingBanner'
 import { UnauthenticatedBanner } from '@/lib/components/panels/UnauthenticatedBanner'
@@ -27,7 +28,7 @@ interface PageProps {
   limits: LivingDexResolvedUserLimits | null
 }
 
-const Page = ({ selectedGame, selectedPreset, limits }: PageProps) => {
+const NewDexView = ({ selectedGame, selectedPreset, limits }: PageProps) => {
   const auth = useSession()
   const livingdex = useContext(LivingDexContext)
   const { dexes, dexesLoading } = useDexesContext()
@@ -132,6 +133,14 @@ const Page = ({ selectedGame, selectedPreset, limits }: PageProps) => {
         />
       )}
     </div>
+  )
+}
+
+const Page = ({ selectedGame, selectedPreset, limits }: PageProps) => {
+  return (
+    <LivingDexLayout>
+      <NewDexView selectedGame={selectedGame} selectedPreset={selectedPreset} limits={limits} />
+    </LivingDexLayout>
   )
 }
 
