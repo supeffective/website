@@ -1,8 +1,7 @@
 {
   "recommendations": [
     "esbenp.prettier-vscode",
-    "christian-kohler.path-intellisense",
-    "eliostruyf.vscode-front-matter"
+    "christian-kohler.path-intellisense"
   ],
   "unwantedRecommendations": ["eamodio.gitlens"]
 }

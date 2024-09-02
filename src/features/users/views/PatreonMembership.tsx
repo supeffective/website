@@ -22,17 +22,26 @@ export function PatreonMembership(): JSX.Element | null {
   const hasLinkedPatreon = membership.patreonUserId !== null
   const _expirationDate = membership.expiresAt ? new Date(membership.expiresAt) : null
   const isPaidMember = membership.isSubscriptionTier
+  const isLifetime = membership.expiresAt === null && membership.patronStatus === 'gift_patron'
+  const isMember = isPaidMember || isLifetime
+  const patreonTierName = isPaidMember ? (
+    `Patreon - ${patreonTiers[membership.currentTier].name}`
+  ) : (
+    <span style={{ color: '#aaa' }}>(none)</span>
+  )
+  const tierTitle = isLifetime ? 'Lifetime Membership' : patreonTierName
+  const perksTitle = isMember ? 'Unlocked Perks' : 'Account Limits'
 
   return (
     <UserRestrictedArea>
       <p>
-        <b>Patreon Membership: </b>
-        <code style={{ color: 'var(--color-blueberry-accent)' }}>{patreonTiers[membership.currentTier].name}</code>
-        {isPaidMember && (
+        <b>Membership: </b>
+        <code style={{ color: 'var(--color-blueberry-accent)' }}>{tierTitle}</code>
+        {isMember && (
           <i
-            className="icon-pkg-shiny"
+            className={isPaidMember ? 'icon-pkg-shiny' : 'icon-pkg-ribbon'}
             style={{
-              color: 'orange',
+              color: isPaidMember ? 'orange' : 'cyan',
               fontSize: '1.2rem',
               marginLeft: '0.2rem',
             }}
@@ -40,7 +49,7 @@ export function PatreonMembership(): JSX.Element | null {
         )}
       </p>
       <p>
-        <b>Entitled Rewards: </b>
+        <b>{perksTitle}: </b>
         <code style={{ color: 'var(--color-blueberry-accent)' }}>
           {membership.rewardMaxDexes} dexes
           {membership.rewardFeaturedStreamer ? ', featured streamer' : ''}
@@ -85,7 +94,15 @@ export function PatreonMembership(): JSX.Element | null {
             </>
           )}
           <small style={{ fontStyle: 'italic', color: 'rgba(255,255,255,0.6)' }}>
-            Link your Patreon account and become a patron to unlock extras in the website and Discord.
+            {!isMember && (
+              <>
+                Link your Patreon account and subscribe to one of our plans to unlock extras in the website (e.g. more
+                dexes, early access to new features, etc.), and in Discord (special role and channel access).
+                <br />
+                <br />
+              </>
+            )}
+            By linking your account, you will also be able to login to the website via Patreon.
           </small>
         </>
       )}
