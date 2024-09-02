@@ -39,9 +39,9 @@ export function PatreonMembership(): JSX.Element | null {
         <code style={{ color: 'var(--color-blueberry-accent)' }}>{tierTitle}</code>
         {isMember && (
           <i
-            className={isPaidMember ? 'icon-pkg-shiny' : 'icon-pkg-ribbon'}
+            className={isLifetime ? 'icon-pkg-ribbon' : 'icon-pkg-shiny'}
             style={{
-              color: isPaidMember ? 'orange' : 'cyan',
+              color: isLifetime ? 'cyan' : 'orange',
               fontSize: '1.2rem',
               marginLeft: '0.2rem',
             }}
