@@ -45,11 +45,7 @@ export default function MainHeader() {
             <SiteLink activeClass={styles.active} tabIndex={2} href="/apps/livingdex">
               <i className={'icon-pkg-box margin-r icon--2x'} /> LivingDexes
             </SiteLink>
-            <a
-              title="PokéPC - SuperEffective's successor"
-              tabIndex={2}
-              href="https://pokepc.net/?ref=supereffective"
-            >
+            <a title="PokéPC - SuperEffective's successor" tabIndex={2} href="https://pokepc.net/?ref=supereffective">
               <i style={{ color: 'cyan', marginRight: '4px' }} className={'icon-pkg-shiny icon--2x'} /> PokéPC{' '}
               <sup style={{ color: 'cyan', marginLeft: '4px' }}>NEW</sup>
             </a>
