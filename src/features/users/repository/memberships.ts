@@ -218,6 +218,7 @@ async function requestAndSaveRefreshedPatreonToken(accountId: string, refreshTok
     },
     data: {
       access_token: data.access_token,
+      refresh_token: data.refresh_token,
       expires_at: expires_at_seconds,
     },
   })
